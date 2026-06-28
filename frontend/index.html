@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa hàng Nước hoa | PerfumeStore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div class="top-bar bg-dark text-white text-center py-1">
+        <small style="font-size: 12px; letter-spacing: 1px;">
+            CAM KẾT CHÍNH HÃNG 100% - FAKE ĐỀN 200% GIÁ TRỊ ĐƠN HÀNG
+        </small>
+    </div>
+
+    <header class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-2">
+        <div class="container">
+            <a class="navbar-brand me-4" href="#trang-chu">
+                <img src="pic/logo4.png" alt="Logo" style="height: 60px; width: auto; object-fit: contain;">
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-4">
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="#trang-chu">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="#trang-san-pham">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="#trang-thuong-hieu">Thương hiệu</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="#trang-gioi-thieu">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="#trang-lien-he">Liên hệ</a></li>
+                </ul>
+
+                <div class="vr mx-4 d-none d-lg-block text-secondary" style="height: 30px;"></div>
+
+                <ul class="navbar-nav align-items-center gap-3">
+                    <li id="auth-links" class="nav-item dropdown">
+                        <a class="nav-link text-dark" href="#" data-bs-toggle="dropdown"><i class="bi bi-person fs-4"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                            <li><a class="dropdown-item" href="#trang-dang-nhap">Đăng nhập</a></li>
+                            <li><a class="dropdown-item" href="#trang-dang-ky">Đăng ký</a></li>
+                        </ul>
+                    </li>
+
+                    <li id="user-info" class="nav-item dropdown" style="display: none;">
+                        <a class="nav-link text-dark" href="#" data-bs-toggle="dropdown"><i class="bi bi-person-check-fill fs-4 text-success"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                            <li><span class="dropdown-item-text fw-bold text-primary" id="user-name-display"></span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#trang-ho-so"><i class="bi bi-person-lines-fill me-2"></i>Hồ sơ của tôi</a></li>
+                            
+                            <li><a id="admin-link" class="dropdown-item" href="admin.html" style="display: none;"><i class="bi bi-speedometer2 me-2"></i>Quản lý Shop</a></li>
+                            <li><a class="dropdown-item" href="#trang-lich-su"><i class="bi bi-clock-history me-2"></i>Đơn hàng của tôi</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a id="logout-btn" class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item position-relative">
+                        <a href="#trang-gio-hang" class="nav-link text-dark">
+                            <i class="bi bi-bag fs-4"></i>
+                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light" style="font-size: 10px; display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="trang-chu" class="page active">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active"><img src="pic/hinhbanner1.jpg" class="d-block w-100" alt="Banner 1"></div>
+                    <div class="carousel-item"><img src="pic/hinhbanner2.jpg" class="d-block w-100" alt="Banner 2"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            </div>
+
+            <div class="container py-4 border-bottom">
+                <div class="row text-center g-4">
+                    <div class="col-6 col-md-3"><div class="policy-item"><i class="bi bi-check-circle fs-2 text-dark mb-2"></i><h6 class="fw-bold text-uppercase" style="font-size: 13px;">Hàng chính hãng 100%</h6><small class="text-muted" style="font-size: 12px;">Bồi thường nếu phát hiện Fake</small></div></div>
+                    <div class="col-6 col-md-3"><div class="policy-item"><i class="bi bi-truck fs-2 text-dark mb-2"></i><h6 class="fw-bold text-uppercase" style="font-size: 13px;">Miễn phí vận chuyển</h6><small class="text-muted" style="font-size: 12px;">Đơn hàng từ 2.000.000đ</small></div></div>
+                    <div class="col-6 col-md-3"><div class="policy-item"><i class="bi bi-gift fs-2 text-dark mb-2"></i><h6 class="fw-bold text-uppercase" style="font-size: 13px;">Gói quà miễn phí</h6><small class="text-muted" style="font-size: 12px;">Sang trọng & Tinh tế</small></div></div>
+                    <div class="col-6 col-md-3"><div class="policy-item"><i class="bi bi-arrow-repeat fs-2 text-dark mb-2"></i><h6 class="fw-bold text-uppercase" style="font-size: 13px;">Đổi trả linh hoạt</h6><small class="text-muted" style="font-size: 12px;">Trong vòng 7 ngày</small></div></div>
+                </div>
+            </div>
+
+            <div class="container mt-5 mb-5">
+                <h3 class="text-center fw-bold mb-4" style="font-family: 'Playfair Display', serif;">THƯƠNG HIỆU NỔI BẬT</h3>
+                <div class="brand-slider">
+                    <div class="brand-track">
+                        <div class="brand-slide" onclick="window.filterByBrand('chanel')"><img src="pic/chanelthuonghieu.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('dior')"><img src="pic/diorthuonghieu.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('gucci')"><img src="pic/thuonghieugucci.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('versace')"><img src="pic/thuonghieuversace.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('tomford')"><img src="pic/thuonghieutomford.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('ysl')"><img src="pic/thuonghieuysl.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('ck')"><img src="pic/thuonghieuCK.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('creed')"><img src="pic/thuonghieucreed.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('chanel')"><img src="pic/chanelthuonghieu.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('dior')"><img src="pic/diorthuonghieu.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('gucci')"><img src="pic/thuonghieugucci.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('versace')"><img src="pic/thuonghieuversace.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('tomford')"><img src="pic/thuonghieutomford.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('ysl')"><img src="pic/thuonghieuysl.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('ck')"><img src="pic/thuonghieuCK.jpg"></div>
+                        <div class="brand-slide" onclick="window.filterByBrand('creed')"><img src="pic/thuonghieucreed.jpg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-5" id="sale-section" style="display: none;">
+                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom border-danger border-2 pb-2">
+                    <h2 class="text-danger fw-bold m-0"><i class="bi bi-fire"></i> KHUYẾN MÃI HOT</h2>
+                    <a href="#trang-san-pham" class="text-decoration-none text-danger fw-bold small">Xem tất cả ></a>
+                </div>
+                <div id="sale-product-list" class="row row-cols-1 row-cols-md-4 g-4"></div>
+            </div>
+
+            <div class="container mt-5" id="new-section" style="display: none;">
+                <h2 class="text-center mb-4 fw-bold text-success">SẢN PHẨM MỚI VỀ</h2>
+                <div id="new-product-list" class="row row-cols-1 row-cols-md-4 g-4"></div>
+            </div>
+
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Sản phẩm nổi bật</h2>
+                <div id="featured-product-list" class="row row-cols-1 row-cols-md-4 g-4"></div>
+            </div>
+        </section>
+
+        <section id="trang-san-pham" class="page">
+            <div class="container">
+                <h1 class="text-center mb-4">Danh sách sản phẩm</h1>
+                <div class="row">
+                    <aside class="col-lg-3">
+                        <div class="p-3 border rounded-3 bg-white shadow-sm">
+                            <h4 class="mb-3 fw-bold text-uppercase"><i class="bi bi-funnel-fill"></i> Bộ lọc</h4>
+                            
+                            <div class="mb-4 border-bottom pb-3">
+                                <h6 class="fw-bold small text-uppercase text-muted">Khoảng giá</h6>
+                                <div class="form-check"><input class="form-check-input" type="radio" name="priceRange" value="all" id="priceAll" checked><label class="form-check-label" for="priceAll">Tất cả mức giá</label></div>
+                                <div class="form-check"><input class="form-check-input" type="radio" name="priceRange" value="under2" id="priceUnder2"><label class="form-check-label" for="priceUnder2">Dưới 2 triệu</label></div>
+                                <div class="form-check"><input class="form-check-input" type="radio" name="priceRange" value="2to4" id="price2to4"><label class="form-check-label" for="price2to4">Từ 2 - 4 triệu</label></div>
+                                <div class="form-check"><input class="form-check-input" type="radio" name="priceRange" value="over4" id="priceOver4"><label class="form-check-label" for="priceOver4">Trên 4 triệu</label></div>
+                            </div>
+                            
+                            <div class="mb-4 border-bottom pb-3">
+                                <h6 class="fw-bold small text-uppercase text-muted">Giới tính</h6>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="nam" name="loai"><label class="form-check-label">Nước hoa Nam</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="nu" name="loai"><label class="form-check-label">Nước hoa Nữ</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="unisex" name="loai"><label class="form-check-label">Nước hoa Unisex</label></div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold small text-uppercase text-muted">Thương hiệu</h6>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="chanel" name="thuonghieu"><label class="form-check-label">Chanel</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="dior" name="thuonghieu"><label class="form-check-label">Dior</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="gucci" name="thuonghieu"><label class="form-check-label">Gucci</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="versace" name="thuonghieu"><label class="form-check-label">Versace</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="ysl" name="thuonghieu"><label class="form-check-label">YSL</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="tomford" name="thuonghieu"><label class="form-check-label">Tom Ford</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="creed" name="thuonghieu"><label class="form-check-label">Creed</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="armani" name="thuonghieu"><label class="form-check-label">Armani</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="ck" name="thuonghieu"><label class="form-check-label">Calvin Klein</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="dg" name="thuonghieu"><label class="form-check-label">D&G</label></div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <section class="col-lg-9">
+                        <div class="bg-white p-3 rounded-3 shadow-sm mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                            <div class="input-group" style="max-width: 400px;">
+                                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control border-start-0 ps-0" id="searchInput" placeholder="Bạn muốn tìm mùi hương nào?">
+                            </div>
+                            <div class="text-muted small">Tìm thấy <span id="product-count" class="fw-bold text-dark">0</span> sản phẩm</div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4" id="product-list"></div>
+                        <nav class="mt-5 d-flex justify-content-center"><ul class="pagination" id="pagination-controls"></ul></nav>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-thuong-hieu" class="page">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold">Thương Hiệu Nổi Tiếng</h1>
+                    <p class="text-muted lead">Khám phá bộ sưu tập mùi hương từ các nhà mốt hàng đầu thế giới</p>
+                    <div style="width: 60px; height: 3px; background-color: #000; margin: 20px auto;"></div>
+                </div>
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('chanel')" style="cursor: pointer;"><img src="pic/chanelthuonghieu.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Chanel</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('dior')" style="cursor: pointer;"><img src="pic/diorthuonghieu.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Dior</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('gucci')" style="cursor: pointer;"><img src="pic/thuonghieugucci.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Gucci</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('versace')" style="cursor: pointer;"><img src="pic/thuonghieuversace.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Versace</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('ysl')" style="cursor: pointer;"><img src="pic/thuonghieuysl.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">YSL</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('tomford')" style="cursor: pointer;"><img src="pic/thuonghieutomford.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Tom Ford</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('creed')" style="cursor: pointer;"><img src="pic/thuonghieucreed.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Creed</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('armani')" style="cursor: pointer;"><img src="pic/thuonghieuarmani.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Armani</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('ck')" style="cursor: pointer;"><img src="pic/thuonghieuck.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">Calvin Klein</h5></div></div>
+                    <div class="col"><div class="brand-card shadow-sm p-4 text-center rounded-3 bg-white border h-100" onclick="window.filterByBrand('dg')" style="cursor: pointer;"><img src="pic/thuonghieudg.jpg" class="img-fluid mb-3" style="max-height: 60px;"><h5 class="fw-bold text-uppercase mb-0">D&G</h5></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-chi-tiet" class="page">
+            <div class="container py-5">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#trang-chu" class="text-decoration-none text-muted">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="#trang-san-pham" class="text-decoration-none text-muted">Sản phẩm</a></li>
+                        <li class="breadcrumb-item active fw-bold" aria-current="page" id="breadcrumb-name">Tên sản phẩm</li>
+                    </ol>
+                </nav>
+
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="p-3 border rounded-4 bg-white text-center shadow-sm position-relative">
+                            <img id="product-detail-img" src="" class="img-fluid" alt="Tên sản phẩm" style="max-height: 500px; object-fit: contain;">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h5 class="text-muted text-uppercase mb-2" id="product-detail-brand-top">THƯƠNG HIỆU</h5>
+                        <h1 id="product-detail-name" class="display-6 fw-bold mb-2">Tên sản phẩm</h1>
+                        
+                        <div class="mb-3 text-warning small">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                            <span class="text-muted ms-2">(4.9/5 đánh giá)</span>
+                        </div>
+
+                        <div id="product-detail-price" class="mb-4">... VNĐ</div>
+                        <p id="product-detail-short" class="text-secondary fs-6 mb-4 fst-italic">Mô tả ngắn...</p>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold small text-uppercase">Dung tích:</label>
+                            <div id="product-detail-size" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="input-group" style="width: 130px;">
+                                <span class="input-group-text bg-white" id="btn-decrease" style="cursor: pointer;"><i class="bi bi-dash"></i></span>
+                                <input id="product-detail-quantity" type="number" class="form-control text-center border-start-0 border-end-0" value="1" min="1">
+                                <span class="input-group-text bg-white" id="btn-increase" style="cursor: pointer;"><i class="bi bi-plus"></i></span>
+                            </div>
+                            <button id="add-to-cart-btn" class="btn btn-dark flex-grow-1 py-2 text-uppercase fw-bold shadow-sm">THÊM VÀO GIỎ</button>
+                        </div>
+
+                        <div class="row g-2 small text-muted border-top pt-3">
+                            <div class="col-6"><i class="bi bi-shield-check text-success me-2"></i>Chính hãng 100%</div>
+                            <div class="col-6"><i class="bi bi-truck text-primary me-2"></i>Free ship đơn > 2tr</div>
+                            <div class="col-6"><i class="bi bi-arrow-repeat text-danger me-2"></i>Đổi trả 7 ngày</div>
+                            <div class="col-6"><i class="bi bi-gift text-warning me-2"></i>Gói quà miễn phí</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                            <li class="nav-item"><button class="nav-link active fw-bold text-dark" data-bs-toggle="tab" data-bs-target="#desc-tab">Mô tả chi tiết</button></li>
+                            <li class="nav-item"><button class="nav-link fw-bold text-dark" data-bs-toggle="tab" data-bs-target="#specs-tab">Thông số</button></li>
+                            <li class="nav-item"><button class="nav-link fw-bold text-dark" data-bs-toggle="tab" data-bs-target="#review-tab">Đánh giá</button></li>
+                        </ul>
+                        <div class="tab-content p-4 border rounded-3 bg-light" id="myTabContent">
+                            <div class="tab-pane fade show active" id="desc-tab">
+                                <div id="long-description-content">Đang cập nhật...</div>
+                            </div>
+                            <div class="tab-pane fade" id="specs-tab">
+                                <table class="table table-striped" style="max-width: 500px;">
+                                    <tr><th>Thương hiệu</th><td id="spec-brand">...</td></tr>
+                                    <tr><th>Đối tượng</th><td id="spec-type">...</td></tr>
+                                    <tr><th>Nồng độ</th><td>Eau de Parfum (EDP)</td></tr>
+                                    <tr><th>Độ lưu hương</th><td>7 - 12 giờ</td></tr>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="review-tab">
+                                <p class="text-muted">Chưa có đánh giá nào.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h3 class="fw-bold mb-4 border-start border-5 border-dark ps-3">SẢN PHẨM LIÊN QUAN</h3>
+                    <div id="related-product-list" class="row row-cols-1 row-cols-md-4 g-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-gio-hang" class="page">
+            <div class="container">
+                <h1 class="text-center mb-4">Giỏ hàng của bạn</h1>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <table class="table align-middle">
+                            <thead><tr><th>Sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Tổng</th><th>Xóa</th></tr></thead>
+                            <tbody id="cart-items-body"><tr><td colspan="5">(Giỏ hàng rỗng)</td></tr></tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Tổng kết đơn hàng</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between"><span>Tạm tính:</span><span id="cart-subtotal">0 VNĐ</span></li>
+                                    <li class="list-group-item d-flex justify-content-between fw-bold"><span>Tổng cộng:</span><span id="cart-total" class="text-danger">0 VNĐ</span></li>
+                                </ul>
+                                <a href="#trang-thanh-toan" class="btn btn-dark w-100 mt-3">Tiến hành thanh toán</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-thanh-toan" class="page">
+            <div class="container">
+                <h1 class="text-center mb-4">Thanh toán</h1>
+                <div class="row g-5">
+                    <div class="col-md-7">
+                        <h4 class="mb-3">Thông tin giao hàng</h4>
+                        <form id="form-checkout">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Họ và tên</label>
+                                    <input type="text" class="form-control" id="checkoutName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="checkoutEmail" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-control" id="checkoutPhone" 
+                                       placeholder="VD: 0912345678" 
+                                       maxlength="11" 
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Địa chỉ giao hàng</label>
+                                <input type="text" class="form-control" id="checkoutAddress" placeholder="Số nhà, đường, phường/xã..." required>
+                            </div>
+
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="diffAddress">
+                                <label class="form-check-label" for="diffAddress">Giao hàng tới địa chỉ khác?</label>
+                            </div>
+                            <div class="mb-3" id="box-diff-address" style="display: none;">
+                                <input type="text" class="form-control" id="checkoutAddress2" placeholder="Nhập địa chỉ giao hàng thứ 2...">
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h5 class="mb-3">Phương thức thanh toán</h5>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="paymentCOD" value="cod" checked>
+                                <label class="form-check-label" for="paymentCOD">Thanh toán khi nhận hàng (COD)</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="paymentOnline" value="online">
+                                <label class="form-check-label" for="paymentOnline">Chuyển khoản Ngân hàng / Quét QR</label>
+                            </div>
+
+                            <div id="qr-payment-section" class="alert alert-info text-center" style="display: none;">
+                                <p class="fw-bold mb-2">Quét mã để thanh toán:</p>
+                                <img id="vietqr-image" src="" class="img-fluid border rounded shadow-sm mb-3" style="max-width: 250px;">
+                                <p class="small text-muted">Nội dung: <span id="qr-content" class="fw-bold">...</span></p>
+                                <div class="spinner-border text-primary" role="status" style="width: 1.5rem; height: 1.5rem;"></div>
+                                <p class="small text-primary mt-2">Đang chờ xác nhận từ ngân hàng...</p>
+                                <button type="button" class="btn btn-success btn-sm mt-2" onclick="window.simulatePaymentSuccess()">Giả lập: Đã thanh toán trên ĐT</button>
+                            </div>
+
+                            <hr class="my-4">
+                            <button class="w-100 btn btn-lg btn-dark" type="submit">HOÀN TẤT ĐẶT HÀNG</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="card bg-light border-0 rounded-3">
+                            <div class="card-body p-4">
+                                <h4 class="card-title d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-primary">Đơn hàng của bạn</span>
+                                    <span class="badge bg-primary rounded-pill" id="checkout-count">0</span>
+                                </h4>
+                                <ul class="list-group mb-3" id="checkout-summary-list">
+                                    </ul>
+                                <li class="list-group-item d-flex justify-content-between bg-white">
+                                    <span>Tổng tiền (VND)</span>
+                                    <strong id="checkout-total">0 VNĐ</strong>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-gioi-thieu" class="page">
+            <div class="container mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold">Về Chúng Tôi</h1>
+                    <div style="width: 60px; height: 3px; background-color: #d4af37; margin: 15px auto;"></div>
+                </div>
+                
+                <div class="row align-items-center g-5 mb-5">
+                    <div class="col-lg-6">
+                        <div class="position-relative">
+                            <img src="pic/anhgioithieu1.jpg" class="img-fluid rounded-4 shadow" onerror="this.src='https://via.placeholder.com/600x400'" alt="About Us">
+                            <div class="position-absolute bottom-0 start-0 bg-white p-4 rounded-top-end-4 shadow-sm d-none d-md-block" style="max-width: 250px;">
+                                <h5 class="fw-bold m-0 text-dark">Since 2020</h5>
+                                <small class="text-muted">Hành trình 5 năm hương thơm</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bold mb-3" style="font-family: 'Playfair Display', serif;">"Nước hoa là cảm xúc, là ký ức."</h2>
+                        <p class="text-muted lead">PerfumeStore được thành lập với niềm đam mê bất tận với những nốt hương. Chúng tôi không chỉ bán một chai nước hoa, chúng tôi trao cho bạn sự tự tin và phong cách riêng biệt.</p>
+                        <p class="text-muted">Với cam kết <strong class="text-dark">100% Chính Hãng</strong>, mỗi sản phẩm đến tay khách hàng đều được kiểm tra nghiêm ngặt về chất lượng và nguồn gốc.</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+                                    <span class="fw-bold">Hàng Authentic</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+                                    <span class="fw-bold">Giá tốt nhất</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+                                    <span class="fw-bold">Tư vấn tận tâm</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+                                    <span class="fw-bold">Giao hàng nhanh</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+        <section id="trang-lien-he" class="page">
+            <div class="container mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold">Liên hệ với chúng tôi</h1>
+                    <p class="text-muted">Chúng tôi luôn sẵn sàng lắng nghe ý kiến của bạn</p>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <div class="h-100 p-4 bg-dark text-white rounded-4 shadow position-relative overflow-hidden">
+                            <h3 class="fw-bold mb-4">Thông tin liên hệ</h3>
+                            <div class="mb-4">
+                                <p class="mb-2"><i class="bi bi-geo-alt-fill text-warning me-2"></i> <strong>Địa chỉ:</strong><br>123 Đường Nguyễn Văn Cừ, Quận 5, TP.HCM</p>
+                                <p class="mb-2"><i class="bi bi-telephone-fill text-warning me-2"></i> <strong>Hotline:</strong><br>0796 812 711</p>
+                                <p class="mb-0"><i class="bi bi-envelope-fill text-warning me-2"></i> <strong>Email:</strong><br>support@perfumestore.vn</p>
+                            </div>
+                            
+                            <div class="rounded-3 overflow-hidden border border-secondary" style="height: 250px;">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.630773293551!2d106.67998301474896!3d10.762913992330719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e1dd%3A0x43900f1d4539a3d!2zMTIzIMSQLiBOZ3V54buFbiBWxINuIEPhu6IsIFBoxrDhu51uZyAyLCBRdeG6rW4gNSwgVGjDoW5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1679888888888!5m2!1sen!2s" 
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                            <form id="form-contact">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small">Họ tên</label>
+                                        <input type="text" class="form-control bg-light border-0 py-3" id="contactName" placeholder="Nhập tên của bạn" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small">Email</label>
+                                        <input type="email" class="form-control bg-light border-0 py-3" id="contactEmail" placeholder="Nhập email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small">Tiêu đề</label>
+                                        <input type="text" class="form-control bg-light border-0 py-3" id="contactSubject" placeholder="Tiêu đề tin nhắn">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small">Nội dung</label>
+                                        <textarea class="form-control bg-light border-0" id="contactMessage" rows="5" placeholder="Bạn cần hỗ trợ gì?" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-dark w-100 py-3 fw-bold">GỬI TIN NHẮN</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-bao-hanh" class="page">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center mb-4 fw-bold text-uppercase">Chính Sách Bảo Hành</h2>
+                        <div class="bg-white p-5 rounded-3 shadow-sm border">
+                            <h5 class="fw-bold text-warning"><i class="bi bi-shield-check me-2"></i> Cam kết trọn đời</h5>
+                            <p>PerfumeStore cam kết bảo hành tính chính hãng trọn đời cho mọi sản phẩm bán ra. Nếu phát hiện hàng Fake, chúng tôi hoàn tiền 200% giá trị đơn hàng.</p>
+                            <hr>
+                            <h5 class="fw-bold text-dark"><i class="bi bi-tools me-2"></i> Bảo hành lỗi nhà sản xuất</h5>
+                            <p>Bảo hành miễn phí trong 12 tháng đối với các lỗi:</p>
+                            <ul>
+                                <li>Vòi xịt bị tắc, hư hỏng không xịt được.</li>
+                                <li>Nắp chai bị lỏng, không đậy kín.</li>
+                                <li>Nước hoa bị biến đổi mùi (do lỗi bảo quản từ kho).</li>
+                            </ul>
+                            <p class="text-muted fst-italic mt-3">* Lưu ý: Không bảo hành với các lỗi do rơi vỡ, bảo quản sai cách từ phía khách hàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-doi-tra" class="page">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center mb-4 fw-bold text-uppercase">Chính Sách Đổi Trả</h2>
+                        <div class="bg-white p-5 rounded-3 shadow-sm border">
+                            <h5 class="fw-bold text-danger"><i class="bi bi-arrow-repeat me-2"></i> Điều kiện đổi trả</h5>
+                            <ul>
+                                <li>Sản phẩm còn nguyên Seal (nilon bọc ngoài), chưa qua sử dụng.</li>
+                                <li>Thời gian đổi trả: Trong vòng <strong>07 ngày</strong> kể từ ngày nhận hàng.</li>
+                                <li>Có video quay lại quá trình mở hộp (unbox).</li>
+                            </ul>
+                            <hr>
+                            <h5 class="fw-bold text-dark">Quy trình đổi trả</h5>
+                            <ol>
+                                <li>Liên hệ Hotline/Zalo: 0796 812 711 để thông báo.</li>
+                                <li>Gửi sản phẩm về địa chỉ cửa hàng.</li>
+                                <li>Shop kiểm tra tình trạng hàng và tiến hành đổi mới hoặc hoàn tiền trong 24h.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-giao-hang" class="page">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center mb-4 fw-bold text-uppercase">Chính Sách Giao Hàng</h2>
+                        <div class="bg-white p-5 rounded-3 shadow-sm border">
+                            <div class="alert alert-success text-center">
+                                <i class="bi bi-truck fs-4 me-2"></i>
+                                <strong>MIỄN PHÍ VẬN CHUYỂN TOÀN QUỐC CHO ĐƠN TỪ 2.000.000Đ</strong>
+                            </div>
+                            <h5 class="fw-bold mt-4">Thời gian giao hàng</h5>
+                            <ul class="list-group list-group-flush mb-4">
+                                <li class="list-group-item d-flex justify-content-between"><span>TP.HCM (Nội thành)</span> <span class="fw-bold">Giao siêu tốc 2h - 4h</span></li>
+                                <li class="list-group-item d-flex justify-content-between"><span>TP.HCM (Ngoại thành)</span> <span class="fw-bold">Trong ngày hoặc hôm sau</span></li>
+                                <li class="list-group-item d-flex justify-content-between"><span>Tỉnh/Thành khác</span> <span class="fw-bold">2 - 4 ngày làm việc</span></li>
+                            </ul>
+                            <p class="small text-muted">Đơn vị vận chuyển: Giao Hàng Tiết Kiệm (GHTK), Viettel Post.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-bao-mat" class="page">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center mb-4 fw-bold text-uppercase">Chính Sách Bảo Mật</h2>
+                        <div class="bg-white p-5 rounded-3 shadow-sm border">
+                            <p>PerfumeStore cam kết bảo mật tuyệt đối thông tin cá nhân của Quý khách hàng.</p>
+                            <h6 class="fw-bold">1. Mục đích thu thập thông tin</h6>
+                            <p>Chúng tôi chỉ thu thập thông tin (Tên, SĐT, Địa chỉ) để phục vụ việc giao hàng và hỗ trợ bảo hành.</p>
+                            <h6 class="fw-bold mt-3">2. Cam kết bảo mật</h6>
+                            <p>Thông tin của bạn được lưu trữ trên hệ thống an toàn, không chia sẻ cho bên thứ 3 (trừ đơn vị vận chuyển để giao hàng).</p>
+                            <h6 class="fw-bold mt-3">3. Quyền lợi khách hàng</h6>
+                            <p>Bạn có quyền yêu cầu chỉnh sửa hoặc xóa thông tin cá nhân của mình khỏi hệ thống bất cứ lúc nào.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-huong-dan" class="page">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center mb-4 fw-bold text-uppercase">Hướng Dẫn Mua Hàng</h2>
+                        <div class="bg-white p-5 rounded-3 shadow-sm border">
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="badge bg-dark rounded-circle me-3 p-3">1</span>
+                                <div><h6 class="fw-bold">Tìm kiếm sản phẩm</h6><p>Sử dụng thanh tìm kiếm hoặc duyệt qua danh mục Thương hiệu để chọn mùi hương ưng ý.</p></div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="badge bg-dark rounded-circle me-3 p-3">2</span>
+                                <div><h6 class="fw-bold">Thêm vào giỏ hàng</h6><p>Chọn dung tích (50ml, 100ml) và nhấn nút "Thêm vào giỏ".</p></div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="badge bg-dark rounded-circle me-3 p-3">3</span>
+                                <div><h6 class="fw-bold">Thanh toán</h6><p>Điền thông tin giao hàng và chọn phương thức thanh toán (COD hoặc Chuyển khoản).</p></div>
+                            </div>
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-dark rounded-circle me-3 p-3">4</span>
+                                <div><h6 class="fw-bold">Nhận hàng</h6><p>Kiểm tra hàng kỹ trước khi thanh toán cho shipper.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trang-dang-nhap" class="page">
+            <div class="container"><div class="row"><div class="col-lg-5 mx-auto">
+                <form id="form-login" class="form-signin text-center"> 
+                    <h1 class="h3 mb-3 fw-bold">Đăng nhập</h1>
+                    <div class="form-floating mb-3"><input type="email" class="form-control" id="login-email" required><label>Email</label></div>
+                    <div class="form-floating mb-3"><input type="password" class="form-control" id="login-password" required><label>Mật khẩu</label></div>
+                    <div id="login-error" class="text-danger mb-3"></div>
+                    <button class="w-100 btn btn-lg btn-dark" type="submit">Đăng nhập</button>
+                    <div class="d-flex justify-content-between mt-3"><a href="#trang-dang-ky">Đăng ký ngay</a></div>
+                </form>
+            </div></div></div>
+        </section>
+
+        <section id="trang-dang-ky" class="page">
+            <div class="container"><div class="row"><div class="col-lg-5 mx-auto">
+                <form id="form-register" class="form-signin text-center">
+                    <h1 class="h3 mb-3 fw-bold">Tạo tài khoản</h1>
+                    <div class="form-floating mb-3"><input type="text" class="form-control" id="register-name" required><label>Họ và tên</label></div>
+                    <div class="form-floating mb-3"><input type="email" class="form-control" id="register-email" required><label>Email</label></div>
+                    <div class="form-floating mb-3"><input type="password" class="form-control" id="register-password" required><label>Mật khẩu</label></div>
+                    <div id="register-error" class="text-danger mb-3"></div>
+                    <button class="w-100 btn btn-lg btn-dark" type="submit">Đăng ký</button>
+                </form>
+            </div></div></div>
+        </section>
+
+        <section id="trang-lich-su" class="page">
+            <div class="container">
+                <h2 class="text-center mb-4">Đơn hàng của bạn</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle border">
+                        <thead class="table-light"><tr><th>Mã đơn</th><th>Ngày đặt</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+                        <tbody id="my-orders-body"></tbody>
+                    </table>
+                </div>
+                <div id="no-orders-msg" class="text-center mt-5" style="display:none;"><p class="text-muted">Bạn chưa có đơn hàng nào.</p><a href="#trang-san-pham" class="btn btn-dark mt-2">Mua sắm ngay</a></div>
+            </div>
+        </section>
+        <section id="trang-ho-so" class="page">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4">
+                            <div class="card-body p-5">
+                                <h3 class="text-center fw-bold mb-4">Hồ Sơ Của Tôi</h3>
+                                <form id="form-profile">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">Họ và tên</label>
+                                        <input type="text" class="form-control bg-light" id="profile-name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">Email (Tên đăng nhập)</label>
+                                        <input type="email" class="form-control bg-light" id="profile-email" readonly style="cursor: not-allowed; opacity: 0.7;">
+                                        <small class="text-muted" style="font-size: 11px;">*Không thể thay đổi Email</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small">Số điện thoại</label>
+                                        <input type="tel" class="form-control bg-light" id="profile-phone" 
+                                                   placeholder="Cập nhật SĐT để mua hàng nhanh hơn"
+                                                   maxlength="11"
+                                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold small">Địa chỉ mặc định</label>
+                                        <textarea class="form-control bg-light" id="profile-address" rows="3" placeholder="Ví dụ: 123 Đường ABC, Phường X, Quận Y..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark w-100 py-2 fw-bold">LƯU THAY ĐỔI</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="modal fade" id="userOrderDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 border-0 shadow-lg">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="u-od-id">Chi tiết đơn hàng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-light border d-flex justify-content-between align-items-center mb-4">
+                        <span class="fw-bold text-muted">Trạng thái:</span>
+                        <span id="u-od-status" class="badge rounded-pill px-3 py-2">...</span>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 border-end">
+                            <h6 class="text-uppercase text-muted small fw-bold mb-3">Địa chỉ nhận hàng</h6>
+                            <p class="mb-1 fw-bold" id="u-od-name">...</p>
+                            <p class="mb-1 small text-muted"><i class="bi bi-telephone me-2"></i><span id="u-od-phone">...</span></p>
+                            <p class="mb-1 small text-muted"><i class="bi bi-geo-alt me-2"></i><span id="u-od-addr">...</span></p>
+                        </div>
+                        <div class="col-md-6 ps-md-4">
+                             <h6 class="text-uppercase text-muted small fw-bold mb-3">Thông tin đơn</h6>
+                             <p class="mb-1 small"><i class="bi bi-calendar3 me-2"></i>Ngày đặt: <span id="u-od-date" class="fw-bold">...</span></p>
+                             <p class="mb-1 small"><i class="bi bi-credit-card me-2"></i>Thanh toán: <span id="u-od-payment" class="fw-bold">...</span></p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive border rounded-3 mb-3">
+                        <table class="table table-borderless mb-0 align-middle">
+                            <thead class="bg-light border-bottom">
+                                <tr class="text-muted small text-uppercase">
+                                    <th class="ps-3">Sản phẩm</th>
+                                    <th class="text-center">Đơn giá</th>
+                                    <th class="text-center">SL</th>
+                                    <th class="text-end pe-3">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="u-od-list">
+                                </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-end align-items-center">
+                        <div class="text-end">
+                            <small class="text-muted d-block mb-1">Tổng cộng:</small>
+                            <span class="fs-4 fw-bold text-danger" id="u-od-total">0 đ</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light rounded-bottom-4">
+                    <button type="button" class="btn btn-outline-dark fw-bold w-100" data-bs-dismiss="modal">ĐÓNG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container text-center text-md-start">
+            <div class="row text-center text-md-start">
+                
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning" style="font-family: 'Playfair Display', serif;">PerfumeStore</h5>
+                    <p>Chúng tôi cam kết mang đến những chai nước hoa chính hãng, đẳng cấp và lưu giữ những khoảnh khắc tuyệt vời nhất của bạn.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.facebook.com/thachngocphu208/" target="_blank" class="text-secondary fs-4">
+                         <i class="bi bi-facebook"></i>
+                        </a>
+
+                         <a href="https://www.instagram.com/ngphu_8/" target="_blank" class="text-secondary fs-4">
+                         <i class="bi bi-instagram"></i>
+                         </a>
+
+                         <a href="https://www.tiktok.com/@ngphu0805" target="_blank" class="text-secondary fs-4">
+                                  <i class="bi bi-tiktok"></i>
+                        </a>
+                       </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning" style="font-size: 16px;">Chính sách & Hỗ trợ</h5>
+                    <p><a href="#trang-bao-hanh" class="text-white text-decoration-none" style="font-size: 14px;"><i class="bi bi-chevron-right small me-1"></i> Chính sách bảo hành</a></p>
+                    <p><a href="#trang-doi-tra" class="text-white text-decoration-none" style="font-size: 14px;"><i class="bi bi-chevron-right small me-1"></i> Chính sách đổi trả</a></p>
+                    <p><a href="#trang-giao-hang" class="text-white text-decoration-none" style="font-size: 14px;"><i class="bi bi-chevron-right small me-1"></i> Chính sách giao hàng</a></p>
+                    <p><a href="#trang-bao-mat" class="text-white text-decoration-none" style="font-size: 14px;"><i class="bi bi-chevron-right small me-1"></i> Bảo mật thông tin</a></p>
+                    <p><a href="#trang-huong-dan" class="text-white text-decoration-none" style="font-size: 14px;"><i class="bi bi-chevron-right small me-1"></i> Hướng dẫn mua hàng</a></p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning" style="font-size: 16px;">Liên hệ</h5>
+                    <p><i class="bi bi-house-door-fill me-2"></i> 123 Đường Nguyễn Văn Cừ, Q.5, TP.HCM</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> thachngocphu6@gmail.com</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> 0796 812 711</p>
+                    <p><i class="bi bi-clock-fill me-2"></i> 8:00 - 22:00 (Hàng ngày)</p>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p>© 2025 <strong>PerfumeStore</strong>. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <p class="text-center text-md-end">Designed with <i class="bi bi-heart-fill text-danger"></i> by Phú</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
