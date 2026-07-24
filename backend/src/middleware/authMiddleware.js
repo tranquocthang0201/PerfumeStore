@@ -1,44 +1,28 @@
 const jwt = require("jsonwebtoken");
+const { env } = require("../config/env");
 
 function verifyToken(req, res, next) {
-    const authHeader = req.headers.authorization;
+    const authorization = req.headers.authorization || "";
+    const [scheme, token] = authorization.split(" ");
 
-    if (!authHeader) {
-        return res.status(401).json({
-            message: "Bạn chưa đăng nhập"
-        });
-    }
-
-    const token = authHeader.split(" ")[1];
-
-    if (!token) {
-        return res.status(401).json({
-            message: "Token không hợp lệ"
-        });
+    if (scheme !== "Bearer" || !token) {
+        return res.status(401).json({ message: "Thiếu Bearer token" });
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
-        next();
+        req.user = jwt.verify(token, env.jwtSecret, { algorithms: ["HS256"] });
+        return next();
     } catch (error) {
-        return res.status(403).json({
-            message: "Token hết hạn hoặc không hợp lệ"
-        });
+        const message = error.name === "TokenExpiredError" ? "Token đã hết hạn" : "Token không hợp lệ";
+        return res.status(401).json({ message });
     }
 }
 
 function requireAdmin(req, res, next) {
     if (!req.user || req.user.role !== "admin") {
-        return res.status(403).json({
-            message: "Bạn không có quyền quản trị"
-        });
+        return res.status(403).json({ message: "Chỉ quản trị viên được phép thực hiện thao tác này" });
     }
-
-    next();
+    return next();
 }
 
-module.exports = {
-    verifyToken,
-    requireAdmin
-};
+module.exports = { verifyToken, requireAdmin };

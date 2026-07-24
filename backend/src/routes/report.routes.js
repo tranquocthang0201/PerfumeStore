@@ -1,11 +1,10 @@
 const express = require("express");
-const controller = require("../controllers/user.controller");
+const controller = require("../controllers/report.controller");
 const asyncHandler = require("../utils/asyncHandler");
 const { verifyToken, requireAdmin } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.get("/", verifyToken, requireAdmin, asyncHandler(controller.list));
-router.put("/me", verifyToken, asyncHandler(controller.updateMe));
+router.get("/dashboard", verifyToken, requireAdmin, asyncHandler(controller.dashboard));
 
 module.exports = router;
