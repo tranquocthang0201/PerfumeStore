@@ -132,8 +132,9 @@ header.navbar {
 .brand-slider::before { left: 0; top: 0; }
 
 .brand-track {
+    --brand-count: 1;
     display: flex;
-    width: calc(200px * 16);
+    width: calc(200px * var(--brand-count) * 2);
     animation: scroll 30s linear infinite;
 }
 
@@ -148,9 +149,39 @@ header.navbar {
 }
 .brand-slide:hover img { filter: grayscale(0%); opacity: 1; }
 
+.brand-text-logo {
+    min-width: 130px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.86rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #222;
+    background: #fff;
+}
+
+.brand-grid-logo {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-grid-logo img {
+    max-height: 64px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * 8)); }
+    100% { transform: translateX(calc(-200px * var(--brand-count))); }
 }
 
 /* ======================================================
@@ -593,4 +624,168 @@ footer a:hover { color: var(--accent-color); }
     padding: 6px 12px;
     font-size: 0.85rem;
     font-weight: 600;
+}
+/* Logo thương hiệu và cảnh báo tồn kho gọn trong admin */
+.brand-logo-thumb {
+    width: 64px;
+    height: 48px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.brand-logo-fallback {
+    width: 64px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #f1f3f5;
+    color: #495057;
+    font-weight: 700;
+}
+
+.brand-logo-preview-box {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px dashed #ced4da;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.brand-logo-preview-box img {
+    max-width: 90%;
+    max-height: 84px;
+    object-fit: contain;
+    display: none;
+}
+
+.low-stock-container {
+    max-height: 310px;
+    overflow-y: auto;
+}
+
+.low-stock-row {
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: #fff7f7;
+    margin-bottom: 7px;
+    border: 1px solid #ffe0e0;
+}
+
+.low-stock-name {
+    font-size: 0.82rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.low-stock-size {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #dc3545;
+    color: #fff;
+}
+
+
+/* Nhãn động do admin cấu hình cho sản phẩm giảm giá / sản phẩm mới. */
+.product-promo-badge {
+    position: absolute;
+    top: 10px;
+    z-index: 4;
+    min-width: 76px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.7px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    pointer-events: none;
+    backface-visibility: hidden;
+}
+
+.product-promo-badge span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+}
+
+.product-promo-badge::after {
+    content: "";
+    position: absolute;
+    top: -35%;
+    left: -65%;
+    width: 42%;
+    height: 170%;
+    background: rgba(255, 255, 255, 0.55);
+    transform: rotate(18deg);
+    animation: promo-badge-shine 2.4s ease-in-out infinite;
+}
+
+.product-promo-badge--sale {
+    left: 10px;
+    background: linear-gradient(135deg, #ff1744, #b30021);
+    animation: promo-sale-pulse 1.45s ease-in-out infinite;
+}
+
+.product-promo-badge--sale span {
+    animation: promo-sale-text 1.45s ease-in-out infinite;
+}
+
+.product-promo-badge--new {
+    right: 10px;
+    min-width: 58px;
+    background: linear-gradient(135deg, #13a56f, #087a50);
+    animation: promo-new-float 1.8s ease-in-out infinite;
+}
+
+.product-promo-badge--new span {
+    animation: promo-new-text 1.8s ease-in-out infinite;
+}
+
+@keyframes promo-sale-pulse {
+    0%, 100% { transform: scale(1) rotate(-2deg); }
+    50% { transform: scale(1.08) rotate(1deg); }
+}
+
+@keyframes promo-sale-text {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-1px); }
+}
+
+@keyframes promo-new-float {
+    0%, 100% { transform: translateY(0) rotate(2deg); }
+    50% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes promo-new-text {
+    0%, 100% { letter-spacing: 0.7px; }
+    50% { letter-spacing: 1.6px; }
+}
+
+@keyframes promo-badge-shine {
+    0%, 45% { left: -65%; opacity: 0; }
+    55% { opacity: 1; }
+    78%, 100% { left: 125%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-promo-badge,
+    .product-promo-badge span,
+    .product-promo-badge::after {
+        animation: none !important;
+    }
 }

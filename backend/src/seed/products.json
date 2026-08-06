@@ -1,0 +1,997 @@
+[
+  {
+    "id": "dior-1",
+    "name": "Dior Sauvage Elixir",
+    "image": "pic/diorsauvage.jpg",
+    "short": "Hương thơm đậm đặc, nam tính.",
+    "type": "nam",
+    "brand": "dior",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "ml": 75,
+        "price": 3700000,
+        "stock": 5
+      },
+      {
+        "ml": 100,
+        "price": 4150000,
+        "stock": 2
+      }
+    ]
+  },
+  {
+    "id": "dior-2",
+    "name": "Dior J’adore Eau de Parfum",
+    "image": "pic/diorjadore.jpg",
+    "short": "Nữ tính, hoa cỏ sang trọng.",
+    "type": "nu",
+    "brand": "dior",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3100000,
+        "stock": 20
+      },
+      {
+        "ml": 75,
+        "price": 3500000,
+        "stock": 10
+      },
+      {
+        "ml": 100,
+        "price": 3900000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "dior-3",
+    "name": "Miss Dior Blooming Bouquet",
+    "image": "pic/diormiss.jpg",
+    "short": "Mùi hoa tươi, nhẹ nhàng.",
+    "type": "nu",
+    "brand": "dior",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2300000,
+        "stock": 15
+      },
+      {
+        "ml": 75,
+        "price": 2700000,
+        "stock": 8
+      },
+      {
+        "ml": 100,
+        "price": 3000000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "dior-4",
+    "name": "Dior Homme Intense",
+    "image": "pic/diorhomme.jpg",
+    "short": "Hương ấm, gợi cảm cho nam.",
+    "type": "nam",
+    "brand": "dior",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "ml": 75,
+        "price": 3300000,
+        "stock": 6
+      },
+      {
+        "ml": 100,
+        "price": 3600000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "dior-5",
+    "name": "Dior Hypnotic Poison",
+    "image": "pic/diorhypnotic.jpg",
+    "short": "Bí ẩn, gợi cảm, quyến rũ.",
+    "type": "nu",
+    "brand": "dior",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1800000,
+        "stock": 20
+      },
+      {
+        "ml": 75,
+        "price": 2200000,
+        "stock": 12
+      },
+      {
+        "ml": 100,
+        "price": 2500000,
+        "stock": 8
+      }
+    ]
+  },
+  {
+    "id": "dior-6",
+    "name": "Dior Oud Ispahan",
+    "image": "pic/diorispahan.jpg",
+    "short": "Hương gỗ oud nồng nàn.",
+    "type": "unisex",
+    "brand": "dior",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3800000,
+        "stock": 5
+      },
+      {
+        "ml": 75,
+        "price": 4000000,
+        "stock": 3
+      },
+      {
+        "ml": 100,
+        "price": 4200000,
+        "stock": 2
+      }
+    ]
+  },
+  {
+    "id": "chanel-1",
+    "name": "Bleu de Chanel",
+    "image": "pic/chanelbleu.jpg",
+    "short": "Hương gỗ thơm, nam tính, lịch lãm.",
+    "type": "nam",
+    "brand": "chanel",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2900000,
+        "stock": 15
+      },
+      {
+        "ml": 75,
+        "price": 3400000,
+        "stock": 10
+      },
+      {
+        "ml": 100,
+        "price": 3900000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "chanel-2",
+    "name": "Chanel Coco Mademoiselle",
+    "image": "pic/chanelcoco.jpg",
+    "short": "Hương hoa cỏ Chypre, nữ tính.",
+    "type": "nu",
+    "brand": "chanel",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3200000,
+        "stock": 12
+      },
+      {
+        "ml": 75,
+        "price": 3700000,
+        "stock": 8
+      },
+      {
+        "ml": 100,
+        "price": 4100000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "chanel-3",
+    "name": "Chanel Chance Eau Tendre",
+    "image": "pic/chanelchance.jpg",
+    "short": "Hương hoa cỏ trái cây, tươi mát.",
+    "type": "nu",
+    "brand": "chanel",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2950000,
+        "stock": 14
+      },
+      {
+        "ml": 75,
+        "price": 3450000,
+        "stock": 9
+      },
+      {
+        "ml": 100,
+        "price": 3800000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "chanel-4",
+    "name": "Chanel No19 EDP",
+    "image": "pic/chanelNo19.jpg",
+    "short": "Hương hoa cỏ xanh.",
+    "type": "unisex",
+    "brand": "chanel",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3700000,
+        "stock": 7
+      },
+      {
+        "ml": 75,
+        "price": 3900000,
+        "stock": 5
+      },
+      {
+        "ml": 100,
+        "price": 4100000,
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "id": "chanel-5",
+    "name": "Chanel 1957",
+    "image": "pic/chanel1957.jpg",
+    "short": "Xạ hương trắng, hoa cam.",
+    "type": "unisex",
+    "brand": "chanel",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 6200000,
+        "stock": 3
+      },
+      {
+        "ml": 75,
+        "price": 6680000,
+        "stock": 2
+      },
+      {
+        "ml": 100,
+        "price": 7100000,
+        "stock": 1
+      }
+    ]
+  },
+  {
+    "id": "gucci-1",
+    "name": "Gucci Flora Gorgeous Gardenia",
+    "image": "pic/gucci/gucci_1.jpg",
+    "short": "Hương hoa quả ngọt ngào.",
+    "type": "nu",
+    "brand": "gucci",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2950000,
+        "stock": 10
+      },
+      {
+        "ml": 100,
+        "price": 3800000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "gucci-2",
+    "name": "Gucci Guilty Pour Homme EDP",
+    "image": "pic/gucci/gucci_2.jpg",
+    "short": "Gỗ thơm nồng ấm, cổ điển.",
+    "type": "nam",
+    "brand": "gucci",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3000000,
+        "stock": 8
+      },
+      {
+        "ml": 90,
+        "price": 3900000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "gucci-3",
+    "name": "Gucci Bloom Eau de Parfum",
+    "image": "pic/gucci/gucci_3.jpg",
+    "short": "Mùi hoa huệ tự nhiên, thanh lịch.",
+    "type": "nu",
+    "brand": "gucci",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2500000,
+        "stock": 12
+      },
+      {
+        "ml": 100,
+        "price": 3300000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "gucci-4",
+    "name": "Gucci Rush",
+    "image": "pic/gucci/gucci_4.jpg",
+    "short": "Hương nồng, hiện đại, vỏ đỏ.",
+    "type": "nu",
+    "brand": "gucci",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2100000,
+        "stock": 15
+      },
+      {
+        "ml": 75,
+        "price": 2600000,
+        "stock": 8
+      }
+    ]
+  },
+  {
+    "id": "gucci-5",
+    "name": "Gucci Guilty Intense Pour Femme",
+    "image": "pic/gucci/gucci_5.jpg",
+    "short": "Hổ phách, hoa tử đinh hương.",
+    "type": "nu",
+    "brand": "gucci",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2500000,
+        "stock": 10
+      },
+      {
+        "ml": 90,
+        "price": 3500000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "versace-1",
+    "name": "Versace Eros EDT",
+    "image": "pic/versace/versace_1.jpg",
+    "short": "Hương thơm tươi mát, mạnh mẽ.",
+    "type": "nam",
+    "brand": "versace",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1750000,
+        "stock": 20
+      },
+      {
+        "ml": 100,
+        "price": 2500000,
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "id": "versace-2",
+    "name": "Versace Bright Crystal",
+    "image": "pic/versace/versace_2.jpg",
+    "short": "Hoa cỏ tươi, nhẹ nhàng, phổ biến.",
+    "type": "nu",
+    "brand": "versace",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1600000,
+        "stock": 25
+      },
+      {
+        "ml": 90,
+        "price": 2150000,
+        "stock": 12
+      }
+    ]
+  },
+  {
+    "id": "versace-3",
+    "name": "Versace Pour Homme Dylan Blue",
+    "image": "pic/versace/versace_3.jpg",
+    "short": "Thơm mát đại dương, nam tính.",
+    "type": "nam",
+    "brand": "versace",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1800000,
+        "stock": 18
+      },
+      {
+        "ml": 100,
+        "price": 2600000,
+        "stock": 9
+      }
+    ]
+  },
+  {
+    "id": "versace-4",
+    "name": "Versace Yellow Diamond",
+    "image": "pic/versace/versace_4.jpg",
+    "short": "Hương hoa cỏ trái cây, hiện đại.",
+    "type": "nu",
+    "brand": "versace",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1900000,
+        "stock": 15
+      },
+      {
+        "ml": 90,
+        "price": 2750000,
+        "stock": 7
+      }
+    ]
+  },
+  {
+    "id": "versace-5",
+    "name": "Versace Crystal Noir",
+    "image": "pic/versace/versace_5.jpg",
+    "short": "Bí ẩn, gợi cảm với hương hoa.",
+    "type": "nu",
+    "brand": "versace",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1700000,
+        "stock": 14
+      },
+      {
+        "ml": 90,
+        "price": 2400000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "ysl-1",
+    "name": "YSL Libre Eau de Parfum",
+    "image": "pic/ysl/ysl_1.jpg",
+    "short": "Hương hoa Lavender hiện đại.",
+    "type": "nu",
+    "brand": "ysl",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "ml": 90,
+        "price": 4100000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "ysl-2",
+    "name": "YSL Y Eau de Parfum",
+    "image": "pic/ysl/ysl_2.jpg",
+    "short": "Gỗ tươi, mạnh mẽ và nam tính.",
+    "type": "nam",
+    "brand": "ysl",
+    "sizes": [
+      {
+        "ml": 60,
+        "price": 2800000,
+        "stock": 12
+      },
+      {
+        "ml": 100,
+        "price": 3650000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "ysl-3",
+    "name": "YSL Black Opium",
+    "image": "pic/ysl/ysl_3.jpg",
+    "short": "Cà phê, Vani, gợi cảm và lôi cuốn.",
+    "type": "nu",
+    "brand": "ysl",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3100000,
+        "stock": 8
+      },
+      {
+        "ml": 90,
+        "price": 4000000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "ysl-4",
+    "name": "YSL L'Homme EDT",
+    "image": "pic/ysl/ysl_4.jpg",
+    "short": "Hương gỗ, gia vị nhẹ nhàng.",
+    "type": "nam",
+    "brand": "ysl",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1600000,
+        "stock": 15
+      },
+      {
+        "ml": 100,
+        "price": 2300000,
+        "stock": 8
+      }
+    ]
+  },
+  {
+    "id": "ysl-5",
+    "name": "YSL Mon Paris",
+    "image": "pic/ysl/ysl_5.jpg",
+    "short": "Dâu tây, hoa nhài, lãng mạn.",
+    "type": "nu",
+    "brand": "ysl",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "ml": 90,
+        "price": 3700000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "armani-1",
+    "name": "Armani Acqua di Gio Profumo",
+    "image": "pic/armani/armani_1.jpg",
+    "short": "Hương biển, trầm hương, nam tính.",
+    "type": "nam",
+    "brand": "armani",
+    "sizes": [
+      {
+        "ml": 75,
+        "price": 2500000,
+        "stock": 12
+      },
+      {
+        "ml": 125,
+        "price": 3400000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "armani-2",
+    "name": "Armani Si Passione EDP",
+    "image": "pic/armani/armani_2.jpg",
+    "short": "Nữ tính, quả lý chua đen, quyến rũ.",
+    "type": "nu",
+    "brand": "armani",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3100000,
+        "stock": 10
+      },
+      {
+        "ml": 100,
+        "price": 3900000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "armani-3",
+    "name": "Armani My Way",
+    "image": "pic/armani/armani_3.jpg",
+    "short": "Hoa trắng hiện đại, thanh lịch.",
+    "type": "nu",
+    "brand": "armani",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 3000000,
+        "stock": 9
+      },
+      {
+        "ml": 90,
+        "price": 3800000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "armani-4",
+    "name": "Armani Code Pour Homme",
+    "image": "pic/armani/armani_4.jpg",
+    "short": "Hương da thuộc, gợi cảm, ấm áp.",
+    "type": "nam",
+    "brand": "armani",
+    "sizes": [
+      {
+        "ml": 75,
+        "price": 2400000,
+        "stock": 11
+      },
+      {
+        "ml": 125,
+        "price": 3100000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "armani-5",
+    "name": "Armani Prive Rose d’Arabie",
+    "image": "pic/armani/armani_5.jpg",
+    "short": "Hương hoa hồng phương Đông, sang trọng.",
+    "type": "unisex",
+    "brand": "armani",
+    "sizes": [
+      {
+        "ml": 100,
+        "price": 8500000,
+        "stock": 2
+      }
+    ]
+  },
+  {
+    "id": "tomford-1",
+    "name": "Tom Ford Black Orchid EDP",
+    "image": "pic/tomford/tomford_1.jpg",
+    "short": "Hương trầm, nấm truffle, bí ẩn.",
+    "type": "unisex",
+    "brand": "tomford",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 4500000,
+        "stock": 8
+      },
+      {
+        "ml": 100,
+        "price": 6200000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "tomford-2",
+    "name": "Tom Ford Tobacco Vanille",
+    "image": "pic/tomford/tomford_2.jpg",
+    "short": "Thuốc lá, vani, mạnh mẽ.",
+    "type": "unisex",
+    "brand": "tomford",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 5500000,
+        "stock": 6
+      },
+      {
+        "ml": 100,
+        "price": 7900000,
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "id": "tomford-3",
+    "name": "Tom Ford Ombré Leather",
+    "image": "pic/tomford/tomford_3.jpg",
+    "short": "Da thuộc, bạch đậu khấu, quyến rũ.",
+    "type": "unisex",
+    "brand": "tomford",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 4200000,
+        "stock": 9
+      },
+      {
+        "ml": 100,
+        "price": 5800000,
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": "tomford-4",
+    "name": "Tom Ford Neroli Portofino",
+    "image": "pic/tomford/tomford_4.jpg",
+    "short": "Cam chanh tươi mát, Địa Trung Hải.",
+    "type": "unisex",
+    "brand": "tomford",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 4800000,
+        "stock": 7
+      }
+    ]
+  },
+  {
+    "id": "tomford-5",
+    "name": "Tom Ford Tuscan Leather",
+    "image": "pic/tomford/tomford_5.jpg",
+    "short": "Da thuộc, mâm xôi, độc đáo.",
+    "type": "unisex",
+    "brand": "tomford",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 7500000,
+        "stock": 2
+      }
+    ]
+  },
+  {
+    "id": "creed-1",
+    "name": "Creed Aventus",
+    "image": "pic/creed/creed_1.jpg",
+    "short": "Dứa, Khói, Da thuộc, biểu tượng.",
+    "type": "nam",
+    "brand": "creed",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 6500000,
+        "stock": 15
+      },
+      {
+        "ml": 100,
+        "price": 8800000,
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "id": "creed-2",
+    "name": "Creed Silver Mountain Water",
+    "image": "pic/creed/creed_2.jpg",
+    "short": "Trà xanh, Nước suối, Unisex tươi mát.",
+    "type": "unisex",
+    "brand": "creed",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 5900000,
+        "stock": 12
+      },
+      {
+        "ml": 100,
+        "price": 8000000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "creed-3",
+    "name": "Creed Viking",
+    "image": "pic/creed/creed_3.jpg",
+    "short": "Bạc hà, Gỗ đàn hương, phiêu lưu.",
+    "type": "nam",
+    "brand": "creed",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 6000000,
+        "stock": 8
+      }
+    ]
+  },
+  {
+    "id": "creed-4",
+    "name": "Creed Green Irish Tweed",
+    "image": "pic/creed/creed_4.jpg",
+    "short": "Cỏ xanh, hoa diên vĩ, cổ điển.",
+    "type": "nam",
+    "brand": "creed",
+    "sizes": [
+      {
+        "ml": 100,
+        "price": 7500000,
+        "stock": 5
+      }
+    ]
+  },
+  {
+    "id": "ck-1",
+    "name": "CK One",
+    "image": "pic/ck/ck_1.jpg",
+    "short": "Cổ điển, tươi mát, phổ biến nhất.",
+    "type": "unisex",
+    "brand": "ck",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 800000,
+        "stock": 30
+      },
+      {
+        "ml": 100,
+        "price": 1100000,
+        "stock": 20
+      }
+    ]
+  },
+  {
+    "id": "ck-2",
+    "name": "CK Eternity For Men",
+    "image": "pic/ck/ck_2.jpg",
+    "short": "Hương thảo mộc, truyền thống.",
+    "type": "nam",
+    "brand": "ck",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1200000,
+        "stock": 15
+      },
+      {
+        "ml": 100,
+        "price": 1700000,
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "id": "ck-3",
+    "name": "CK Euphoria For Women",
+    "image": "pic/ck/ck_3.jpg",
+    "short": "Quả lựu, hoa sen, ấm áp, nữ tính.",
+    "type": "nu",
+    "brand": "ck",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1400000,
+        "stock": 18
+      },
+      {
+        "ml": 100,
+        "price": 2000000,
+        "stock": 9
+      }
+    ]
+  },
+  {
+    "id": "ck-4",
+    "name": "CK Obsessed For Men",
+    "image": "pic/ck/ck_4.jpg",
+    "short": "Da thuộc, Vani đen, hiện đại.",
+    "type": "nam",
+    "brand": "ck",
+    "sizes": [
+      {
+        "ml": 75,
+        "price": 1350000,
+        "stock": 12
+      }
+    ]
+  },
+  {
+    "id": "ck-5",
+    "name": "CK One Shock For Her",
+    "image": "pic/ck/ck_5.jpg",
+    "short": "Hương kẹo ngọt, vani, gợi cảm.",
+    "type": "nu",
+    "brand": "ck",
+    "sizes": [
+      {
+        "ml": 100,
+        "price": 1250000,
+        "stock": 14
+      }
+    ]
+  },
+  {
+    "id": "dg-1",
+    "name": "D&G Light Blue Pour Homme",
+    "image": "pic/dg/dg_1.jpg",
+    "short": "Hương chanh, biển, tươi mát, mùa hè.",
+    "type": "nam",
+    "brand": "dg",
+    "sizes": [
+      {
+        "ml": 75,
+        "price": 2100000,
+        "stock": 16
+      },
+      {
+        "ml": 125,
+        "price": 2800000,
+        "stock": 8
+      }
+    ]
+  },
+  {
+    "id": "dg-2",
+    "name": "D&G The One For Men",
+    "image": "pic/dg/dg_2.jpg",
+    "short": "Thuốc lá, hổ phách, ấm áp, nam tính.",
+    "type": "nam",
+    "brand": "dg",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2300000,
+        "stock": 12
+      },
+      {
+        "ml": 100,
+        "price": 3000000,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "id": "dg-3",
+    "name": "D&G Light Blue Intense Pour Femme",
+    "image": "pic/dg/dg_3.jpg",
+    "short": "Chanh vàng, táo xanh, tươi mới.",
+    "type": "nu",
+    "brand": "dg",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 1900000,
+        "stock": 15
+      },
+      {
+        "ml": 100,
+        "price": 2600000,
+        "stock": 7
+      }
+    ]
+  },
+  {
+    "id": "dg-4",
+    "name": "D&G Pour Femme",
+    "image": "pic/dg/dg_4.jpg",
+    "short": "Hoa cam, Marshmallow, ngọt nhẹ.",
+    "type": "nu",
+    "brand": "dg",
+    "sizes": [
+      {
+        "ml": 50,
+        "price": 2200000,
+        "stock": 10
+      }
+    ]
+  }
+]

@@ -1,33 +1,11 @@
 const express = require("express");
-const { poolPromise } = require("../config/db");
+const controller = require("../controllers/user.controller");
+const asyncHandler = require("../utils/asyncHandler");
+const { verifyToken, requireAdmin } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// LẤY DANH SÁCH NGƯỜI DÙNG
-router.get("/", async (req, res) => {
-    try {
-        const pool = await poolPromise;
-
-        const result = await pool.request().query(`
-            SELECT 
-                id,
-                fullName,
-                email,
-                phone,
-                address,
-                role,
-                CONVERT(VARCHAR(10), createdAt, 103) AS createdAt
-            FROM Users
-            ORDER BY id DESC
-        `);
-
-        res.json(result.recordset);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: "Lỗi khi lấy danh sách người dùng"
-        });
-    }
-});
+router.get("/", verifyToken, requireAdmin, asyncHandler(controller.list));
+router.put("/me", verifyToken, asyncHandler(controller.updateMe));
 
 module.exports = router;

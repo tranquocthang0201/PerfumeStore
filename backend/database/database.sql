@@ -1,127 +1,185 @@
-IF DB_ID(N'PerfumeStoreDB') IS NULL
+IF OBJECT_ID(N'dbo.Users', N'U') IS NULL
 BEGIN
-    CREATE DATABASE PerfumeStoreDB;
+    CREATE TABLE dbo.Users (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        fullName NVARCHAR(100) NOT NULL,
+        email NVARCHAR(100) NOT NULL UNIQUE,
+        password NVARCHAR(255) NOT NULL,
+        phone NVARCHAR(20) NULL,
+        address NVARCHAR(255) NULL,
+        role NVARCHAR(20) NOT NULL CONSTRAINT DF_Users_Role DEFAULT N'user',
+        createdAt DATETIME2 NOT NULL CONSTRAINT DF_Users_CreatedAt DEFAULT SYSUTCDATETIME(),
+        updatedAt DATETIME2 NULL,
+        CONSTRAINT CK_Users_Role CHECK (role IN (N'user', N'admin'))
+    );
 END
 GO
 
-USE PerfumeStoreDB;
+IF OBJECT_ID(N'dbo.Products', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.Products (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        code NVARCHAR(50) NOT NULL UNIQUE,
+        name NVARCHAR(150) NOT NULL,
+        image NVARCHAR(255) NULL,
+        shortDesc NVARCHAR(255) NULL,
+        type NVARCHAR(50) NOT NULL,
+        brand NVARCHAR(50) NOT NULL,
+        createdAt DATETIME2 NOT NULL CONSTRAINT DF_Products_CreatedAt DEFAULT SYSUTCDATETIME(),
+        updatedAt DATETIME2 NULL
+    );
+END
 GO
 
-IF OBJECT_ID('OrderItems', 'U') IS NOT NULL DROP TABLE OrderItems;
-IF OBJECT_ID('Orders', 'U') IS NOT NULL DROP TABLE Orders;
-IF OBJECT_ID('ProductSizes', 'U') IS NOT NULL DROP TABLE ProductSizes;
-IF OBJECT_ID('Products', 'U') IS NOT NULL DROP TABLE Products;
-IF OBJECT_ID('Users', 'U') IS NOT NULL DROP TABLE Users;
+IF OBJECT_ID(N'dbo.ProductSizes', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.ProductSizes (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        productId INT NOT NULL,
+        ml INT NOT NULL,
+        price DECIMAL(18,2) NOT NULL,
+        stock INT NOT NULL CONSTRAINT DF_ProductSizes_Stock DEFAULT 0,
+        CONSTRAINT FK_ProductSizes_Products FOREIGN KEY (productId)
+            REFERENCES dbo.Products(id) ON DELETE CASCADE,
+        CONSTRAINT UQ_ProductSizes_Product_Ml UNIQUE (productId, ml),
+        CONSTRAINT CK_ProductSizes_Ml CHECK (ml > 0),
+        CONSTRAINT CK_ProductSizes_Price CHECK (price > 0),
+        CONSTRAINT CK_ProductSizes_Stock CHECK (stock >= 0)
+    );
+END
 GO
 
-CREATE TABLE Users (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    fullName NVARCHAR(100) NOT NULL,
-    email NVARCHAR(100) NOT NULL UNIQUE,
-    password NVARCHAR(255) NOT NULL,
-    phone NVARCHAR(20),
-    address NVARCHAR(255),
-    role NVARCHAR(20) DEFAULT 'user',
-    createdAt DATETIME DEFAULT GETDATE()
-);
+IF OBJECT_ID(N'dbo.Orders', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.Orders (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        userId INT NOT NULL,
+        customerName NVARCHAR(100) NOT NULL,
+        email NVARCHAR(100) NOT NULL,
+        phone NVARCHAR(20) NOT NULL,
+        address NVARCHAR(255) NOT NULL,
+        total DECIMAL(18,2) NOT NULL,
+        status NVARCHAR(50) NOT NULL CONSTRAINT DF_Orders_Status DEFAULT N'Chờ xác nhận',
+        paymentMethod NVARCHAR(50) NOT NULL CONSTRAINT DF_Orders_Payment DEFAULT N'COD',
+        orderDate DATETIME2 NOT NULL CONSTRAINT DF_Orders_OrderDate DEFAULT SYSUTCDATETIME(),
+        updatedAt DATETIME2 NULL,
+        CONSTRAINT FK_Orders_Users FOREIGN KEY (userId) REFERENCES dbo.Users(id),
+        CONSTRAINT CK_Orders_Total CHECK (total >= 0),
+        CONSTRAINT CK_Orders_Status CHECK (status IN (N'Chờ xác nhận', N'Đã xác nhận', N'Đang giao', N'Giao thành công', N'Đã hủy'))
+    );
+END
 GO
 
-CREATE TABLE Products (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    code NVARCHAR(50) UNIQUE,
-    name NVARCHAR(150) NOT NULL,
-    image NVARCHAR(255),
-    shortDesc NVARCHAR(255),
-    type NVARCHAR(50),
-    brand NVARCHAR(50),
-    createdAt DATETIME DEFAULT GETDATE()
-);
+IF OBJECT_ID(N'dbo.OrderItems', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.OrderItems (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        orderId INT NOT NULL,
+        productId INT NOT NULL,
+        productName NVARCHAR(150) NOT NULL,
+        ml INT NOT NULL,
+        price DECIMAL(18,2) NOT NULL,
+        quantity INT NOT NULL,
+        CONSTRAINT FK_OrderItems_Orders FOREIGN KEY (orderId)
+            REFERENCES dbo.Orders(id) ON DELETE CASCADE,
+        CONSTRAINT FK_OrderItems_Products FOREIGN KEY (productId)
+            REFERENCES dbo.Products(id),
+        CONSTRAINT CK_OrderItems_Quantity CHECK (quantity > 0),
+        CONSTRAINT CK_OrderItems_Price CHECK (price > 0)
+    );
+END
 GO
 
-CREATE TABLE ProductSizes (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    productId INT NOT NULL,
-    ml INT NOT NULL,
-    price FLOAT NOT NULL,
-    stock INT NOT NULL DEFAULT 0,
-
-    CONSTRAINT FK_ProductSizes_Products
-    FOREIGN KEY (productId)
-    REFERENCES Products(id)
-    ON DELETE CASCADE
-);
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_Orders_UserId' AND object_id = OBJECT_ID(N'dbo.Orders'))
+    CREATE INDEX IX_Orders_UserId ON dbo.Orders(userId, orderDate DESC);
 GO
 
-CREATE TABLE Orders (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    userId INT,
-    customerName NVARCHAR(100),
-    email NVARCHAR(100),
-    phone NVARCHAR(20),
-    address NVARCHAR(255),
-    total FLOAT NOT NULL,
-    status NVARCHAR(50) DEFAULT N'Chờ xác nhận',
-    paymentMethod NVARCHAR(50),
-    orderDate DATETIME DEFAULT GETDATE(),
-
-    CONSTRAINT FK_Orders_Users
-    FOREIGN KEY (userId)
-    REFERENCES Users(id)
-);
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_Products_Brand_Type' AND object_id = OBJECT_ID(N'dbo.Products'))
+    CREATE INDEX IX_Products_Brand_Type ON dbo.Products(brand, type);
 GO
 
-CREATE TABLE OrderItems (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    orderId INT NOT NULL,
-    productId INT,
-    productName NVARCHAR(150),
-    ml INT,
-    price FLOAT,
-    quantity INT NOT NULL,
-
-    CONSTRAINT FK_OrderItems_Orders
-    FOREIGN KEY (orderId)
-    REFERENCES Orders(id)
-    ON DELETE CASCADE,
-
-    CONSTRAINT FK_OrderItems_Products
-    FOREIGN KEY (productId)
-    REFERENCES Products(id)
-);
+-- Nâng cấp an toàn cho database đã được tạo từ phiên bản cũ của đồ án.
+IF COL_LENGTH(N'dbo.Users', N'updatedAt') IS NULL
+    ALTER TABLE dbo.Users ADD updatedAt DATETIME2 NULL;
 GO
 
-INSERT INTO Users (fullName, email, password, phone, address, role)
-VALUES
-(N'Admin', N'admin@perfume.vn', N'$2a$10$QWertYhKsJmJ5XK1d6fB6eP4ObqNml3nLUaRV8uELx4EY4uYj27Wm', N'0900000000', N'Perfume Store', N'admin');
+IF COL_LENGTH(N'dbo.Products', N'updatedAt') IS NULL
+    ALTER TABLE dbo.Products ADD updatedAt DATETIME2 NULL;
 GO
 
-INSERT INTO Products (code, name, image, shortDesc, type, brand)
-VALUES
-(N'dior-1', N'Dior Sauvage Elixir', N'pic/diorsauvage.jpg', N'Hương thơm đậm đặc, nam tính.', N'nam', N'dior'),
-(N'dior-2', N'Dior J’adore Eau de Parfum', N'pic/diorjadore.jpg', N'Nữ tính, hoa cỏ sang trọng.', N'nu', N'dior'),
-(N'chanel-1', N'Bleu de Chanel', N'pic/chanelbleu.jpg', N'Hương gỗ thơm, nam tính, lịch lãm.', N'nam', N'chanel'),
-(N'chanel-2', N'Chanel Coco Mademoiselle', N'pic/chanelcoco.jpg', N'Hương hoa cỏ Chypre, nữ tính.', N'nu', N'chanel'),
-(N'gucci-1', N'Gucci Flora Gorgeous Gardenia', N'pic/gucci/gucci_1.jpg', N'Hương hoa quả ngọt ngào.', N'nu', N'gucci');
+IF COL_LENGTH(N'dbo.Orders', N'updatedAt') IS NULL
+    ALTER TABLE dbo.Orders ADD updatedAt DATETIME2 NULL;
 GO
 
-INSERT INTO ProductSizes (productId, ml, price, stock)
-VALUES
-(1, 50, 3200000, 10),
-(1, 75, 3700000, 5),
-(1, 100, 4150000, 2),
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE object_id = OBJECT_ID(N'dbo.ProductSizes')
+      AND name IN (N'UQ_ProductSizes_Product_Ml', N'UX_ProductSizes_Product_Ml')
+)
+    CREATE UNIQUE INDEX UX_ProductSizes_Product_Ml ON dbo.ProductSizes(productId, ml);
+GO
 
-(2, 50, 3100000, 20),
-(2, 75, 3500000, 10),
-(2, 100, 3900000, 5),
+IF OBJECT_ID(N'dbo.Brands', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.Brands (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        name NVARCHAR(100) NOT NULL,
+        slug NVARCHAR(50) NOT NULL UNIQUE,
+        description NVARCHAR(255) NULL,
+        logo NVARCHAR(MAX) NULL,
+        createdAt DATETIME2 NOT NULL CONSTRAINT DF_Brands_CreatedAt DEFAULT SYSUTCDATETIME(),
+        updatedAt DATETIME2 NULL
+    );
+END
+GO
 
-(3, 50, 2900000, 15),
-(3, 75, 3400000, 10),
-(3, 100, 3900000, 5),
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE name = N'IX_Brands_Name' AND object_id = OBJECT_ID(N'dbo.Brands')
+)
+    CREATE INDEX IX_Brands_Name ON dbo.Brands(name);
+GO
 
-(4, 50, 3200000, 12),
-(4, 75, 3700000, 8),
-(4, 100, 4100000, 4),
+-- Danh mục động để admin có thể thêm/sửa/xóa thay vì cố định Nam/Nữ/Unisex.
+IF OBJECT_ID(N'dbo.Categories', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.Categories (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        name NVARCHAR(100) NOT NULL,
+        slug NVARCHAR(50) NOT NULL UNIQUE,
+        description NVARCHAR(255) NULL,
+        createdAt DATETIME2 NOT NULL CONSTRAINT DF_Categories_CreatedAt DEFAULT SYSUTCDATETIME(),
+        updatedAt DATETIME2 NULL
+    );
+END
+GO
 
-(5, 50, 2950000, 10),
-(5, 100, 3800000, 5);
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE name = N'IX_Categories_Name' AND object_id = OBJECT_ID(N'dbo.Categories')
+)
+    CREATE INDEX IX_Categories_Name ON dbo.Categories(name);
+GO
+
+-- Logo có thể là đường dẫn/URL hoặc ảnh Data URL được chọn từ máy admin.
+IF COL_LENGTH(N'dbo.Brands', N'logo') IS NOT NULL
+    ALTER TABLE dbo.Brands ALTER COLUMN logo NVARCHAR(MAX) NULL;
+GO
+
+
+-- Thuộc tính hiển thị ngoài trang chủ: giảm giá, hàng mới và nổi bật.
+IF COL_LENGTH(N'dbo.Products', N'discount') IS NULL
+    ALTER TABLE dbo.Products ADD discount INT NOT NULL CONSTRAINT DF_Products_Discount DEFAULT (0) WITH VALUES;
+GO
+
+IF COL_LENGTH(N'dbo.Products', N'isNew') IS NULL
+    ALTER TABLE dbo.Products ADD isNew BIT NOT NULL CONSTRAINT DF_Products_IsNew DEFAULT (0) WITH VALUES;
+GO
+
+IF COL_LENGTH(N'dbo.Products', N'isFeatured') IS NULL
+    ALTER TABLE dbo.Products ADD isFeatured BIT NOT NULL CONSTRAINT DF_Products_IsFeatured DEFAULT (0) WITH VALUES;
+GO
+
+IF OBJECT_ID(N'dbo.CK_Products_Discount', N'C') IS NULL
+    ALTER TABLE dbo.Products ADD CONSTRAINT CK_Products_Discount CHECK (discount BETWEEN 0 AND 99);
 GO

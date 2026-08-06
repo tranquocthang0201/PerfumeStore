@@ -1,0 +1,63 @@
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: perfume-store-database
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?MSSQL_SA_PASSWORD must be set}
+    ports:
+      - "${DB_EXPOSED_PORT:-1433}:1433"
+    volumes:
+      - perfume_store_sql_data:/var/opt/mssql
+    networks:
+      - perfume-store-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: perfume-store-backend
+    restart: unless-stopped
+    depends_on:
+      - database
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:8080}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      DB_USER: sa
+      DB_PASSWORD: ${MSSQL_SA_PASSWORD:?MSSQL_SA_PASSWORD must be set}
+      DB_SERVER: database
+      DB_PORT: 1433
+      DB_DATABASE: ${DB_DATABASE:-PerfumeStoreDB}
+      DB_ENCRYPT: "false"
+      DB_TRUST_SERVER_CERTIFICATE: "true"
+      DB_CONNECT_RETRIES: 60
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@perfume.vn}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD must be set}
+      ADMIN_FULL_NAME: ${ADMIN_FULL_NAME:-PerfumeStore Admin}
+    expose:
+      - "3000"
+    networks:
+      - perfume-store-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: perfume-store-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${APP_PORT:-8080}:80"
+    networks:
+      - perfume-store-network
+
+volumes:
+  perfume_store_sql_data:
+
+networks:
+  perfume-store-network:
+    driver: bridge

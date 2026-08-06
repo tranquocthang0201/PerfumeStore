@@ -1,28 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+const app = require("./src/app");
+const { env } = require("./src/config/env");
+const { closePool } = require("./src/config/db");
 
-const authRoutes = require("./src/routes/auth.routes");
-const productRoutes = require("./src/routes/product.routes");
-const orderRoutes = require("./src/routes/order.routes");
-const userRoutes = require("./src/routes/user.routes");
-
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-app.get("/", (req, res) => {
-    res.send("Backend website bán nước hoa đang chạy");
+const server = app.listen(env.port, () => {
+    console.log(`PerfumeStore API đang chạy tại http://localhost:${env.port}`);
+    console.log(`Swagger UI: http://localhost:${env.port}/api-docs`);
 });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/users", userRoutes);
+async function shutdown(signal) {
+    console.log(`\nNhận ${signal}, đang dừng server...`);
+    server.close(async () => {
+        await closePool();
+        process.exit(0);
+    });
+}
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server đang chạy tại http://localhost:${PORT}`);
-});
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+process.on("SIGINT", () => shutdown("SIGINT"));
