@@ -1,11 +1,17 @@
 {
   "name": "perfume-store-backend",
-  "version": "1.0.0",
-  "description": "Backend cho website bán nước hoa",
+  "version": "2.2.0",
+  "description": "RESTful API cho website bán nước hoa PerfumeStore",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "db:init": "node src/seed/initDatabase.js",
+    "check": "node scripts/check.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
