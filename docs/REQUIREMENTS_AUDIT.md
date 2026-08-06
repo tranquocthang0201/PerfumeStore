@@ -1,95 +1,221 @@
-# Báo cáo đối chiếu yêu cầu đồ án
+Báo cáo đối chiếu yêu cầu đồ án
 
-Ngày rà soát: 22/07/2026
+Ngày cập nhật tài liệu: 06/08/2026
 
-## Kết luận
+Phạm vi: mã nguồn trong gói PerfumeStore hiện tại
 
-Mã nguồn ban đầu có frontend/backend riêng và một middleware JWT, nhưng nghiệp vụ SQL nằm trực tiếp trong route, API admin chưa được bảo vệ đầy đủ, frontend còn lọc đơn hàng bằng email ở trình duyệt, đồng thời chưa có Swagger, Docker, test hoặc GitHub Actions.
+Repository: <GITHUB_REPOSITORY_URL>
 
-Phiên bản đã chỉnh sửa giải quyết toàn bộ yêu cầu kỹ thuật có thể thực hiện trong mã nguồn. Tiêu chí contribution của tất cả thành viên vẫn cần nhóm tạo lịch sử làm việc thật qua Jira, branch, commit và Pull Request.
+1. Quy ước trạng thái
 
-## Đối chiếu từng tiêu chí
+Đạt: có cấu trúc mã nguồn hoặc cấu hình chứng minh rõ.
 
-### 1. Tách backend–frontend và gọi RESTful API — Đạt
+Đạt về cấu hình: đã có file cấu hình nhưng nhóm vẫn phải chạy thật và chụp minh chứng.
 
-- `frontend/` và `backend/` độc lập.
-- `frontend/api.js` là lớp gọi API dùng chung.
-- Nginx phục vụ frontend và reverse proxy `/api/*` sang backend.
-- Không còn lấy toàn bộ đơn hàng về trình duyệt rồi lọc theo email.
+Chưa đủ minh chứng: không thể kết luận đạt nếu chưa có lịch sử hoặc kết quả chạy thực tế.
 
-### 2. JWT — Đạt
+2. Bảng đối chiếu tổng hợp
 
-- Đăng nhập phát JWT HS256 có hạn dùng.
-- Middleware bắt buộc định dạng `Authorization: Bearer ...`.
-- Phân quyền `user` và `admin`.
-- Product write, danh sách user và quản trị đơn hàng chỉ cho admin.
-- Người dùng chỉ xem/hủy đơn thuộc sở hữu của mình.
-- Backend tự lấy email/user ID từ token khi tạo đơn.
+STT
 
-### 3. Kiến trúc backend phân tầng — Đạt
+Yêu cầu
 
-Luồng xử lý:
+Trạng thái
 
-```text
+Minh chứng chính
+
+1
+
+Frontend và backend là hai dự án rõ ràng, gọi nhau qua RESTful API
+
+Đạt
+
+frontend/, backend/, frontend/api.js, frontend/nginx.conf
+
+2
+
+Có bảo mật JWT
+
+Đạt
+
+auth.service.js, authMiddleware.js, các route dùng verifyToken và requireAdmin
+
+3
+
+Backend phân tầng routes, controllers, services, models
+
+Đạt
+
+backend/src/routes, controllers, services, models, middleware
+
+4
+
+Swagger cho từng API
+
+Đạt
+
+OpenAPI 3.0.3, 18 path/26 operation, /api-docs, /api-docs.json
+
+5
+
+Dockerize toàn bộ ứng dụng
+
+Đạt về cấu hình
+
+Hai Dockerfile, SQL Server service, docker-compose.yml, Nginx reverse proxy
+
+6
+
+GitHub có contribution thường xuyên, đều đặn của tất cả thành viên
+
+Chưa đủ minh chứng
+
+Cần commit thật, PR, review và lịch sử theo nhiều ngày của từng thành viên
+
+3. Chi tiết từng yêu cầu
+
+3.1. Tách frontend–backend và RESTful API — Đạt
+
+frontend/ và backend/ có mã nguồn, Dockerfile và cấu hình riêng.
+
+frontend/api.js gom các thao tác gọi API dùng chung.
+
+Nginx reverse proxy /api/* và /api-docs sang backend.
+
+Frontend không truy cập SQL Server trực tiếp.
+
+Minh chứng nên chụp:
+
+Cây thư mục repository.
+
+Network request trên DevTools.
+
+Trang Swagger hoặc response /api/health.
+
+3.2. JWT và phân quyền — Đạt
+
+Đăng nhập phát JWT có thời hạn.
+
+Middleware chỉ chấp nhận Authorization: Bearer ....
+
+Các thao tác quản trị yêu cầu role admin.
+
+User chỉ được xem hoặc hủy đơn thuộc sở hữu của mình.
+
+Khi tạo đơn, backend lấy user/email từ token thay vì tin dữ liệu client.
+
+Minh chứng nên chụp:
+
+Swagger Authorize bằng token user và admin.
+
+Response 401 khi thiếu token.
+
+Response 403 khi user gọi API admin.
+
+3.3. Backend phân tầng — Đạt
+
+Luồng chuẩn:
+
 Route → Controller → Service → Model → SQL Server
-```
 
-- Route: khai báo URL/middleware.
-- Controller: chuyển HTTP request/response.
-- Service: nghiệp vụ, validation, phân quyền theo dữ liệu.
-- Model: câu lệnh SQL và transaction.
-- Middleware: JWT, admin, xử lý lỗi.
-- Config/utils/docs/seed được tách riêng.
+Trách nhiệm từng tầng được mô tả tại docs/ARCHITECTURE.md.
 
-### 4. Swagger cho từng API — Đạt
+3.4. Swagger cho từng API — Đạt
 
-- OpenAPI 3.0.3: `backend/src/docs/openapi.js`.
-- Swagger UI: `/api-docs`.
-- JSON spec: `/api-docs.json`.
-- Có schema JWT Bearer và mô tả request/response cho toàn bộ route hiện tại.
-- Unit test sẽ thất bại nếu thiếu operation bắt buộc.
+File đặc tả: backend/src/docs/openapi.js.
 
-### 5. Dockerize toàn bộ — Đạt về cấu hình
+Phiên bản OpenAPI: 3.0.3.
 
-- SQL Server container.
-- Backend Node container, tự chờ DB, chạy migration/seed rồi start API.
-- Frontend Nginx container, reverse proxy API.
-- Persistent volume cho SQL Server.
-- Biến môi trường nằm ngoài mã nguồn.
+Phiên bản API: 2.2.0.
 
-Cần chạy thực tế trên máy có Docker và lưu ảnh `docker compose ps` làm minh chứng.
+Số lượng hiện tại: 18 path và 26 operation.
 
-### 6. GitHub contribution đều đặn của tất cả thành viên — Chưa thể tự động hoàn thành
+Có schema JWT Bearer và các schema dữ liệu chính.
 
-Lịch sử hiện được rà soát chỉ thể hiện một tác giả chính và nhiều file frontend từng chưa được Git theo dõi. Không nên rewrite lịch sử hoặc tạo commit giả. Nhóm phải:
+Test openapi.test.js kiểm tra endpoint bắt buộc và Bearer JWT.
 
-1. Chia backlog thành ticket nhỏ.
-2. Mỗi thành viên nhận ticket thật.
-3. Commit qua nhiều ngày bằng tài khoản/email GitHub của chính mình.
-4. Mở Pull Request và review chéo.
-5. Gắn mã Jira trong branch/commit/PR.
+3.5. Dockerize toàn bộ — Đạt về cấu hình
 
-Xem `GIT_CONTRIBUTION_PLAN.md`.
+database: SQL Server 2022, persistent volume.
 
-## Điểm cộng
+backend: Node.js container, nhận biến môi trường và kết nối DB qua Docker network.
 
-### Cloud/VPS — Sẵn sàng
+frontend: Nginx container, phục vụ static UI và reverse proxy.
 
-Có hướng dẫn Nginx/domain/HTTPS và lệnh Docker Compose trong `DEPLOY_VPS.md`. Nhóm vẫn cần sở hữu VPS/domain và cấu hình secret thực tế.
+Compose không công khai cổng backend; frontend là điểm truy cập chính.
 
-### GitHub Actions CI/CD — Đạt về cấu hình
+Nhóm vẫn phải chạy và lưu minh chứng:
 
-- CI: cài dependency, syntax check, unit test, build hai Docker image, validate Compose.
-- CD: khi merge `main`, SSH vào VPS, pull code và `docker compose up -d --build`.
-- CD chỉ chạy thành công sau khi thêm GitHub Secrets và chuẩn bị VPS.
+docker compose up -d --build
+docker compose ps
+curl http://localhost:8080/api/health
 
-## Hạng mục nên bổ sung vào báo cáo nộp
+3.6. Contribution của tất cả thành viên — Chưa đủ minh chứng
 
-- Use-case diagram và activity/sequence diagram.
-- ERD từ các bảng Users, Products, ProductSizes, Orders, OrderItems.
-- Test case table và ảnh 13 unit test pass.
-- Ảnh Swagger với token admin/user.
-- Ảnh Docker containers.
-- Ảnh Jira board, sprint report, burndown hoặc cumulative flow.
-- Link Figma và prototype.
-- Link GitHub Actions run và deployment URL.
+Lịch sử trong gói mã nguồn hiện tại chủ yếu thể hiện một tác giả chính. Không được rewrite lịch sử hoặc dùng git commit --author để giả contribution.
+
+Nhóm cần hoàn thiện bằng công việc thật:
+
+Mỗi thành viên nhận ticket có acceptance criteria.
+
+Dùng tài khoản và email GitHub của chính mình.
+
+Tạo branch theo Jira ticket.
+
+Commit nhỏ, có ý nghĩa qua nhiều ngày.
+
+Mở Pull Request và review chéo.
+
+Gắn link branch, commit, PR và kết quả CI vào Jira.
+
+Xem docs/GIT_CONTRIBUTION_PLAN.md.
+
+4. Điểm cộng
+
+4.1. GitHub Actions CI/CD — Đạt về cấu hình
+
+CI chạy npm ci, syntax check, unit test, build hai Docker image và validate Compose.
+
+Deploy workflow SSH vào VPS, pull main và chạy docker compose up -d --build.
+
+Cần cấu hình GitHub Environment production và secrets thật.
+
+4.2. Cloud/VPS — Sẵn sàng triển khai
+
+Có hướng dẫn tại docs/DEPLOY_VPS.md. Chỉ đánh dấu đã triển khai sau khi có:
+
+URL/IP truy cập được.
+
+HTTPS hoặc reverse proxy phù hợp.
+
+Ảnh container đang chạy.
+
+Health check thành công.
+
+GitHub Actions deploy thành công.
+
+5. Checklist minh chứng trước khi nộp
+
+Cây thư mục frontend/backend.
+
+Swagger hiển thị đầy đủ API.
+
+Test JWT user/admin.
+
+npm run check thành công.
+
+npm test thành công.
+
+docker compose ps có đủ ba service.
+
+Health check thành công.
+
+GitHub Actions CI xanh.
+
+Link/ảnh VPS hoặc cloud.
+
+Jira board, sprint và ticket có PR.
+
+Figma prototype và design system.
+
+Contributors graph và PR review của cả ba thành viên.
