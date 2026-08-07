@@ -1,58 +1,182 @@
-# Checklist Figma cho PerfumeStore
+Checklist Figma và bàn giao giao diện PerfumeStore
 
-## Cấu trúc file Figma
+Figma file: <FIGMA_FILE_URL>
 
-Tạo một file duy nhất, gồm các page:
+Jira board: <JIRA_BOARD_URL>
 
-1. `00 Cover & Links`
-2. `01 Research & User Flow`
-3. `02 Wireframes`
-4. `03 Design System`
-5. `04 Customer Desktop`
-6. `05 Customer Mobile`
-7. `06 Admin Dashboard`
-8. `07 Prototype`
-9. `08 Handoff`
+Repository: <GITHUB_REPOSITORY_URL>
 
-## Frame tối thiểu
+1. Cấu trúc file Figma
 
-- Trang chủ.
-- Danh sách và lọc sản phẩm.
-- Chi tiết sản phẩm.
-- Giỏ hàng.
-- Checkout.
-- Đăng ký/đăng nhập.
-- Hồ sơ.
-- Lịch sử và chi tiết đơn hàng.
-- Admin overview.
-- Admin products/add/edit.
-- Admin orders/status.
-- Admin users.
-- Responsive mobile cho luồng mua hàng chính.
+Tạo một file dùng chung gồm các page:
 
-## Design system
+00 Cover & Links
 
-- Color styles/tokens: primary, surface, success, warning, danger, text.
-- Typography styles: display, heading, body, caption.
-- Spacing/radius/shadow tokens.
-- Components: button variants, input, product card, badge status, navbar, modal, table, pagination.
-- Component variants cho default/hover/disabled/error.
+01 Research & User Flow
 
-## Prototype cần demo
+02 Wireframes
 
-```text
+03 Design System
+
+04 Customer Desktop
+
+05 Customer Mobile
+
+06 Admin Dashboard
+
+07 Prototype
+
+08 Handoff
+
+Page 00 Cover & Links cần có link Jira, GitHub, website demo và thông tin phiên bản.
+
+2. Frame tối thiểu
+
+Khách hàng
+
+Trang chủ.
+
+Danh sách/tìm kiếm/lọc sản phẩm.
+
+Chi tiết sản phẩm và chọn dung tích.
+
+Giỏ hàng.
+
+Checkout COD/QR.
+
+Đăng ký và đăng nhập.
+
+Hồ sơ.
+
+Lịch sử và chi tiết đơn hàng.
+
+Quản trị
+
+Admin login.
+
+Dashboard.
+
+Danh sách/thêm/sửa sản phẩm.
+
+Quản lý thương hiệu.
+
+Quản lý danh mục.
+
+Quản lý đơn hàng và trạng thái.
+
+Danh sách người dùng.
+
+Báo cáo và cảnh báo tồn kho.
+
+Responsive
+
+Mobile cho luồng mua hàng chính.
+
+Trạng thái menu mobile.
+
+Form, bảng và modal ở kích thước nhỏ.
+
+3. Design system
+
+Tạo styles/tokens cho:
+
+Màu: primary, surface, text, success, warning, danger.
+
+Typography: display, heading, body, caption.
+
+Spacing, radius và shadow.
+
+Grid/breakpoint.
+
+Components cần có variants:
+
+Button.
+
+Input/select/textarea.
+
+Product card.
+
+Badge trạng thái.
+
+Navbar/sidebar.
+
+Modal.
+
+Table và pagination.
+
+Toast/alert.
+
+Empty/loading/error state.
+
+Mỗi component nên có trạng thái default, hover, disabled, loading và error khi phù hợp.
+
+4. Prototype cần demo
+
+Khách hàng:
+
 Home → Product list → Product detail → Add to cart → Checkout → Login → Place order → Order history
-```
 
-Admin:
+Quản trị:
 
-```text
-Admin login → Dashboard → Add/edit product → Update order status
-```
+Admin login → Dashboard → Add/edit product → Update order status → View report
 
-## Liên kết với Jira/GitHub
+5. Quy tắc đặt tên
 
-- Dán link frame vào ticket UI tương ứng.
-- Tên frame có mã Jira, ví dụ `PERF-21 / Checkout / Desktop`.
-- Khi implement xong, đính kèm ảnh before/after hoặc link PR vào ticket.
-- Đặt link Figma ở README và mô tả repository sau khi nhóm có URL thật.
+Frame:
+
+PERF-<id> / <Screen> / <Desktop|Mobile> / <State>
+
+Ví dụ:
+
+PERF-21 / Checkout / Desktop / Default
+PERF-21 / Checkout / Mobile / Validation Error
+
+Component:
+
+Component/Variant/State
+
+6. Liên kết với Jira và GitHub
+
+Dán link frame/prototype vào ticket UI.
+
+PR frontend ghi link Figma tương ứng.
+
+Jira ticket ghi link PR và ảnh before/after.
+
+README và docs/README.md chỉ ghi link Figma thật sau khi quyền truy cập đã được kiểm tra.
+
+7. Handoff cho lập trình
+
+Mỗi màn hình cần thể hiện:
+
+Kích thước frame và breakpoint.
+
+Khoảng cách, font, màu và component dùng lại.
+
+Trạng thái loading, empty, success và error.
+
+Nội dung validation.
+
+Quyền user/admin nếu liên quan.
+
+API endpoint hoặc dữ liệu cần hiển thị.
+
+8. Checklist trước khi bàn giao
+
+Không có frame trùng tên hoặc chưa sắp xếp.
+
+Component dùng Auto Layout khi phù hợp.
+
+Màu và font dùng styles/tokens.
+
+Prototype không có link hỏng.
+
+Có mobile flow.
+
+Có trạng thái lỗi và dữ liệu rỗng.
+
+Jira ticket có link đúng frame.
+
+Người implement đã review Figma.
+
+Ảnh giao diện thực tế được đối chiếu với thiết kế.
