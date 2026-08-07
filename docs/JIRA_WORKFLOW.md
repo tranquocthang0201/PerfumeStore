@@ -1,62 +1,188 @@
-# Quy trình Jira đề xuất
+Quy trình Jira cho dự án PerfumeStore
 
-## Board
+Jira board: <JIRA_BOARD_URL>
+
+Project key dự kiến: PERF
+
+Repository: <GITHUB_REPOSITORY_URL>
+
+1. Board
 
 Dùng Scrum board với các cột:
 
-```text
 Backlog → Selected for Development → In Progress → Code Review → Testing → Done
-```
 
-## Definition of Ready
+Không chuyển ticket thẳng từ Backlog sang Done.
 
-Một ticket chỉ được kéo vào sprint khi có:
+2. Loại issue
 
-- User story hoặc mục tiêu rõ.
-- Acceptance criteria kiểm thử được.
-- Người phụ trách.
-- Ước lượng story point.
-- Link Figma/API nếu liên quan.
+Epic: nhóm chức năng lớn, ví dụ Customer, Admin, Security, DevOps.
 
-## Definition of Done
+Story: chức năng mang giá trị cho người dùng.
 
-- Code đã push bằng tài khoản thành viên phụ trách.
-- Có Pull Request và review.
-- CI pass.
-- Swagger cập nhật nếu API thay đổi.
-- Test/manual evidence được đính kèm.
-- Jira ticket có link PR/commit.
-- Chức năng chạy được bằng Docker Compose.
+Task: công việc kỹ thuật hoặc tài liệu.
 
-## Sprint gợi ý
+Bug: lỗi có bước tái hiện và kết quả mong đợi.
 
-### Sprint 1 — Phân tích và thiết kế
+3. Mẫu ticket
 
-- Requirement, use case, ERD.
-- Wireframe và design system Figma.
-- Product backlog, phân công, repository rules.
+## Mục tiêu
+Mô tả ngắn chức năng hoặc vấn đề cần giải quyết.
 
-### Sprint 2 — Core backend/frontend
+## Phạm vi
+- File/module liên quan
+- Không bao gồm
 
-- Auth/JWT.
-- Product catalog.
-- Cart/checkout.
-- Layered backend.
+## Acceptance criteria
+- [ ] Điều kiện 1 kiểm thử được
+- [ ] Điều kiện 2 kiểm thử được
+- [ ] Có thông báo lỗi phù hợp
 
-### Sprint 3 — Admin và chất lượng
+## Minh chứng
+- Branch:
+- Commit:
+- Pull Request:
+- Test/ảnh/video:
+- Figma/Swagger:
 
-- Product/order/user admin.
-- Swagger.
-- Test.
-- Docker.
+4. Definition of Ready
 
-### Sprint 4 — Release
+Ticket chỉ được kéo vào sprint khi có:
 
-- CI/CD.
-- VPS/domain/HTTPS.
-- Regression test.
-- Báo cáo và demo.
+Mục tiêu hoặc user story rõ.
 
-## Import backlog mẫu
+Acceptance criteria kiểm thử được.
 
-File `jira-backlog.csv` là backlog khởi tạo để import hoặc copy vào Jira. Hãy thay assignee/estimate theo thành viên thật và trạng thái thực tế.
+Người phụ trách thật.
+
+Story point/ước lượng.
+
+Link Figma hoặc API nếu liên quan.
+
+Phụ thuộc đã được nhận diện.
+
+5. Definition of Done
+
+Code/tài liệu đã push bằng tài khoản thành viên phụ trách.
+
+Có Pull Request.
+
+Có ít nhất một review của thành viên khác.
+
+CI pass.
+
+Test hoặc manual evidence đã đính kèm.
+
+Swagger được cập nhật nếu API thay đổi.
+
+Tài liệu được cập nhật nếu kiến trúc/triển khai thay đổi.
+
+Chức năng chạy được bằng Docker Compose nếu liên quan.
+
+Ticket có link branch, commit và PR.
+
+6. Quy tắc branch và commit
+
+Branch:
+
+feature/PERF-<id>-ten-ngan
+fix/PERF-<id>-ten-ngan
+docs/PERF-<id>-ten-ngan
+
+Commit:
+
+PERF-<id> <type>(<scope>): <mô tả>
+
+Ví dụ:
+
+PERF-20 docs(architecture): update API and Docker diagrams
+PERF-21 test(openapi): verify required operations
+PERF-22 fix(order): restore stock when owner cancels order
+
+7. Luồng một ticket
+
+Nhận ticket và chuyển sang In Progress.
+
+Tạo branch từ develop hoặc nhánh nhóm đang thống nhất.
+
+Sửa và kiểm thử.
+
+Push branch, mở PR.
+
+Chuyển ticket sang Code Review.
+
+Người khác review; tác giả sửa phản hồi.
+
+CI pass, chuyển sang Testing.
+
+Kiểm tra acceptance criteria.
+
+Merge và chuyển Done.
+
+8. Sprint gợi ý
+
+Sprint 1 — Phân tích và thiết kế
+
+Requirement, use case và ERD.
+
+Wireframe, design system Figma.
+
+Backlog, phân công và quy tắc repository.
+
+Sprint 2 — Core customer/backend
+
+Auth/JWT.
+
+Product catalog.
+
+Cart/checkout/order history.
+
+Kiến trúc backend phân tầng.
+
+Sprint 3 — Admin và chất lượng
+
+Product/brand/category/order/user admin.
+
+Swagger.
+
+Unit test.
+
+Docker Compose.
+
+Sprint 4 — Release
+
+CI/CD.
+
+VPS/domain/HTTPS.
+
+Regression test.
+
+Báo cáo, minh chứng và demo.
+
+9. Quy tắc evidence
+
+Mỗi ticket Done nên có ít nhất một trong các minh chứng:
+
+Link Pull Request.
+
+Link GitHub Actions run.
+
+Ảnh/video giao diện.
+
+Ảnh Swagger response.
+
+Test output.
+
+Link Figma frame/prototype.
+
+10. Backlog mẫu
+
+docs/jira-backlog.csv là dữ liệu tham khảo. Trước khi import:
+
+Kiểm tra tên cột Jira hỗ trợ.
+
+Thay assignee theo tài khoản thật.
+
+Không đánh dấu Done cho công việc chưa làm.
+
+Không tạo ticket chỉ để tăng số lượng commit.
